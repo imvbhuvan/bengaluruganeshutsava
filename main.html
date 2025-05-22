@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern UI for BGU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="main.html" class="logo">
+                <img src="images/logo.png" alt="BGU Logo">
+            </a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="main.html" class="active">Home</a>
+                <a href="history.html">History</a>
+                <a href="about.html">About Us</a>
+                <a href="#milestones">Milestones</a>
+                <a href="#recognitions">Recognitions</a>
+                <a href="#contact-section" class="contact-nav">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="scrolling-text">
+        <div class="scroll-content">
+            Welcome to BGU - Celebrating 63 Years of Cultural Heritage
+        </div>
+    </div>
+
+    <section class="hero">
+        <h1>63rd Bengluru Ganesh Utsava </h1>
+        <h4>August 27 - September 06, 2025</h4>
+        <p>Witness Culture Unfold !! </p>
+        <button>Know More</button>
+    </section>
+
+    <section class="slideshow-container">
+        <div class="slides-wrapper">
+            <div class="slide">
+                <img src="images/ss2.jpg" alt="BGU Celebration 1">
+            </div>
+            <div class="slide">
+                <img src="images/ss1.jpg" alt="BGU Celebration 2">
+            </div>
+            <div class="slide">
+                <img src="images/ss6.jpg" alt="BGU Celebration 3">
+            </div>
+            <div class="slide">
+                <img src="images/ss7.jpg" alt="BGU Celebration 4">
+            </div>
+            <div class="slide">
+                <img src="images/ss8.jpg" alt="BGU Celebration 5">
+            </div>
+            <!-- Duplicate slides for seamless scrolling -->
+            <div class="slide">
+                <img src="images/ss2.jpg" alt="BGU Celebration 1">
+            </div>
+            <div class="slide">
+                <img src="images/ss1.jpg" alt="BGU Celebration 2">
+            </div>
+            <div class="slide">
+                <img src="images/ss3.jpg" alt="BGU Celebration 3">
+            </div>
+            <div class="slide">
+                <img src="images/ss4.jpg" alt="BGU Celebration 4">
+            </div>
+            <div class="slide">
+                <img src="images/ss5.jpg" alt="BGU Celebration 5">
+            </div>
+        </div>
+    </section>
+           
+    <footer id="contact-section">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@bgu" target="_blank" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com/bgu" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/bgu" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@bgu.co.in</p>
+                <p>Phone: +91 9342022070</p>
+                <p>Address: 37, 1st Main Rd, NR Colony, Basavanagudi, Bengaluru, Karnataka 560004</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 BGU. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

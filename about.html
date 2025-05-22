@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - BGU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="main.html" class="logo">
+                <img src="images/logo.png" alt="BGU Logo">
+            </a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="main.html">Home</a>
+                <a href="history.html">History</a>
+                <a href="about.html" class="active">About Us</a>
+                <a href="#milestones">Milestones</a>
+                <a href="#recognitions">Recognitions</a>
+                <a href="#contact-section" class="contact-nav">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <h1>About Bengaluru Ganesh Utsava</h1>
+        <p>Celebrating Culture, Unity, and Tradition Since 1962</p>
+    </section>
+
+    <section class="about-content">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>Our Mission</h2>
+                <p>Bengaluru Ganesh Utsava is dedicated to preserving and promoting Indian cultural heritage through artistic expression, community engagement, and educational initiatives. We strive to create an inclusive platform that celebrates diversity while fostering unity.</p>
+                
+                <h2>Our Vision</h2>
+                <p>To be the leading cultural organization that bridges tradition and modernity, inspiring future generations to embrace and perpetuate India's rich cultural legacy.</p>
+            </div>
+            <div class="about-image">
+                <img src="images/about.jpg" alt="BGU Celebration">
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <h2>Our Core Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <i class="fas fa-heart"></i>
+                <h3>Cultural Heritage</h3>
+                <p>Preserving and promoting traditional arts and culture</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-users"></i>
+                <h3>Community</h3>
+                <p>Building strong bonds through shared cultural experiences</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-star"></i>
+                <h3>Excellence</h3>
+                <p>Striving for the highest quality in all our endeavors</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-handshake"></i>
+                <h3>Unity</h3>
+                <p>Fostering harmony through cultural celebration</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact-section">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@bgu" target="_blank" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.instagram.com/bgu" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/bgu" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@bgu.co.in</p>
+                <p>Phone: +91 9342022070</p>
+                <p>Address: 37, 1st Main Rd, NR Colony, Basavanagudi, Bengaluru, Karnataka 560004</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 BGU. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html> 
