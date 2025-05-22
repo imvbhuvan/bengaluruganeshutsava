@@ -25,17 +25,35 @@
 }
 
 .video-container {
-    max-width: 1200px;
-    margin: 60px auto 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 2rem 0;
 }
 
-.video-container iframe {
-    width: 100%;
-    height: 600px;
-    border: none;
+.video-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-container .watch-text {
+    margin-top: 1rem;
+    font-family: 'Playfair Display', serif;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.video-container img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
 }
 
 /* History Section Styles */
