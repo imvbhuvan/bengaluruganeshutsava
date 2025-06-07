@@ -67,22 +67,21 @@
     letter-spacing: 1px;
 }
 
-.hero button {
-    background-color: #FFD700;
-    color: #B22222;
+.hero button, .hero-btn {
+    background-color: #B22222;
+    color: #fff;
+    padding: 1rem 2.5rem;
     border: none;
-    padding: 1.2rem 3rem;
-    font-size: 1.1rem;
     border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-decoration: none;
+    display: inline-block;
 }
 
-.hero button:hover {
+.hero button:hover, .hero-btn:hover {
     background-color: #FFA500;
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);

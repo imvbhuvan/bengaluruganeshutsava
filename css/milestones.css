@@ -1,0 +1,305 @@
+/* Milestones Page Styles */
+.milestones-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.milestones-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+}
+
+.milestones-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: #1a237e;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.milestones-header p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.milestone {
+    margin-bottom: 6rem;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.milestone:hover {
+    transform: translateY(-5px);
+}
+
+.milestone h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #B22222;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.milestone h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: #FFD700;
+}
+
+.milestone-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.milestone-content.reverse {
+    direction: rtl;
+}
+
+.milestone-content.reverse .milestone-text {
+    direction: ltr;
+}
+
+.milestone-images {
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.image-grid.top-image {
+    grid-template-rows: auto auto;
+}
+
+.image-grid.top-image img:first-child {
+    grid-column: 1;
+    height: 300px;
+}
+
+.image-grid.top-image .bottom-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.image-grid.top-image .bottom-images img {
+    height: 200px;
+}
+
+.image-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+}
+
+.image-grid.vertical-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.image-grid.vertical-stack img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.image-grid.vertical-stack img:hover {
+    transform: scale(1.02);
+}
+
+.milestone-text {
+    padding: 1rem;
+}
+
+.milestone-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 2rem;
+}
+
+.milestone-highlights {
+    list-style: none;
+    padding: 0;
+}
+
+.milestone-highlights li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.milestone-highlights li:hover {
+    background: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: translateX(5px);
+}
+
+.milestone-highlights i {
+    color: #B22222;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    width: 24px;
+    text-align: center;
+}
+
+.milestone-highlights span {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Single image styles for milestone 4 */
+.single-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.single-image img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.single-image img:hover {
+    transform: scale(1.02);
+}
+
+/* Responsive Design for Milestones */
+@media (max-width: 992px) {
+    .milestones-header h1 {
+        font-size: 3rem;
+    }
+
+    .milestone-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .milestone-content.reverse {
+        direction: ltr;
+    }
+
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .milestones-section {
+        padding: 1rem;
+    }
+
+    .milestones-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .milestone {
+        padding: 1.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .milestone h2 {
+        font-size: 1.8rem;
+    }
+
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .image-grid.top-image img:first-child {
+        height: 250px;
+    }
+
+    .image-grid.top-image .bottom-images img {
+        height: 180px;
+    }
+
+    .image-grid.vertical-stack img {
+        height: 200px;
+    }
+
+    .milestone-text p {
+        font-size: 1rem;
+    }
+
+    .single-image img {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .milestones-header h1 {
+        font-size: 2rem;
+    }
+
+    .milestone h2 {
+        font-size: 1.5rem;
+    }
+
+    .milestone-highlights li {
+        font-size: 0.9rem;
+    }
+
+    .image-grid.top-image img:first-child {
+        height: 200px;
+    }
+
+    .image-grid.top-image .bottom-images {
+        grid-template-columns: 1fr;
+    }
+
+    .image-grid.top-image .bottom-images img {
+        height: 150px;
+    }
+
+    .image-grid.vertical-stack img {
+        height: 180px;
+    }
+
+    .single-image img {
+        max-height: 300px;
+    }
+} 
