@@ -226,4 +226,66 @@
     .slide img {
         height: 150px;
     }
+}
+
+.ganesha-shloka-columns {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 25px;
+}
+.ganesha-shloka-kannada, .ganesha-shloka-english {
+    flex: 1;
+    font-size: 1.2rem;
+    line-height: 2;
+    font-family: 'Playfair Display', serif;
+    color: #B22222;
+    font-weight: 600;
+    padding: 1rem 0;
+}
+.ganesha-shloka-kannada {
+    border-right: 2px solid #FFD700;
+    padding-right: 2rem;
+}
+.ganesha-shloka-english {
+    padding-left: 2rem;
+}
+@media (max-width: 800px) {
+    .ganesha-shloka-columns {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    .ganesha-shloka-kannada, .ganesha-shloka-english {
+        border: none;
+        padding: 200;
+    }
+}
+
+/* Gallery Link Section */
+.gallery-link-section {
+    max-width: 1000px;
+    margin: 2rem auto 3rem auto;
+    text-align: center;
+}
+
+.gallery-link-text {
+    font-size: 1.2rem;
+    color: #B22222;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+    display: inline-block;
+    margin: 1.5rem 0 2.5rem 0;
+}
+.gallery-link-text:hover {
+    color: #1100ff;
+    text-decoration: none;
+    cursor: pointer;
 } 

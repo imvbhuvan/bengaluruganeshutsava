@@ -1,0 +1,22 @@
+/* Privacy Policy Page Styles */
+.privacy-policy-section {
+    max-width: 800px;
+    margin: 3rem auto 2rem auto;
+    padding: 2rem;
+    background: #fff7ef;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.privacy-policy-section h1 {
+    font-family: 'Playfair Display', serif;
+    color: #B22222;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.privacy-policy-section p {
+    color: #333;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: left;
+} 

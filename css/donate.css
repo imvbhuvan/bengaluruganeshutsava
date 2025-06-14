@@ -1,0 +1,115 @@
+/* Donate Page Styles */
+.donate-section {
+    max-width: 900px;
+    margin: 3rem auto 2rem auto;
+    padding: 2rem;
+    background: #fff7ef;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.donate-section h1 {
+    font-family: 'Playfair Display', serif;
+    color: #B22222;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.donate-table-container {
+    overflow-x: auto;
+}
+.donate-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.donate-table th {
+    padding: 0.8rem;
+    border: 1px solid #B22222;
+    background: #B22222;
+    color: #FFD700;
+}
+.donate-table td {
+    padding: 0.7rem;
+    border: 1px solid #B22222;
+}
+.donate-table .donation-amount-col {
+    width: 150px;
+    min-width: 90px;
+    max-width: 150px;
+    text-align: center;
+}
+
+.donate-table .date-col {
+    width: 150px;
+    min-width: 90px;
+    max-width: 150px;
+    text-align: center;
+}
+
+.donate-table .sl-no-col {
+    width: 70px;
+    min-width: 60px;
+    max-width: 150px;
+    text-align: center;
+}
+
+.donate-custom-text {
+    margin-top: 2rem;
+    color: #B22222;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.donate-form-qr-row {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin: 2rem auto 0 auto;
+    max-width: 900px;
+    flex-wrap: wrap;
+}
+.donate-qr-placeholder {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.donate-qr-placeholder img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border: 2px dashed #B22222;
+    background: #fff;
+    display: block;
+}
+.donate-form-iframe {
+    flex: 2;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.donate-form-iframe iframe {
+    width: 100%;
+    max-width: 640px;
+    display: block;
+    border: none;
+}
+
+@media (max-width: 900px) {
+    .donate-form-qr-row {
+        flex-direction: column-reverse;
+        gap: 2rem;
+        align-items: stretch;
+    }
+    .donate-qr-placeholder, .donate-form-iframe {
+        min-width: 0;
+        width: 100%;
+        align-items: center;
+    }
+    .donate-qr-placeholder img {
+        margin: 0 auto;
+    }
+}

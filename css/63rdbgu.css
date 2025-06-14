@@ -1,0 +1,838 @@
+/* 63rd BGU Page Styles */
+
+/* Base Styles */
+body {
+    background: #fff;
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #B22222;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #B22222, #FFD700);
+    border-radius: 2px;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../images/ganesha-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(179, 67, 67, 0.3), rgba(0, 0, 0, 0.7));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 800px;
+    padding: 0 2rem;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(156, 152, 88, 0.5);
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-dates {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #FFD700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-venue {
+    padding: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Daily Rituals Section */
+.daily-rituals {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.ritual-main-container {
+    background: white;
+    padding: 3rem;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    margin-top: 3rem;
+}
+
+.ritual-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #B22222;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.ritual-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.ritual-image-item {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ritual-image-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(178, 34, 34, 0.15);
+}
+
+.ritual-image-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 20px rgba(178, 34, 34, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.ritual-image-item:hover img {
+    transform: scale(1.05);
+}
+
+.ritual-image-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #B22222;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.ritual-image-item p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.ritual-timings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.timing-card {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timing-card.morning {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #B22222;
+}
+
+.timing-card.evening {
+    background: linear-gradient(135deg, #B22222, #8B0000);
+    color: white;
+}
+
+.timing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.timing-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.timing-details h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.timing-time {
+    font-size: 1.1rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+/* Divine Performances Section */
+.divine-performances {
+    padding: 5rem 0;
+    background: white;
+}
+
+.performances-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.performance-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.performance-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(178, 34, 34, 0.2);
+}
+
+.performance-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.performance-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.performance-card:hover .performance-image img {
+    transform: scale(1.1);
+}
+
+.performance-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #B22222;
+    margin: 1.5rem 1.5rem 1rem;
+    font-weight: 600;
+}
+
+.performance-card p {
+    color: #666;
+    margin: 0 1.5rem 1.5rem;
+    line-height: 1.6;
+}
+
+.performance-time {
+    background: linear-gradient(135deg, #B22222, #FFD700);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    margin: 0 1.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/* Artists Timeline Section */
+.artists-timeline {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.timeline-container {
+    margin-top: 3rem;
+    position: relative;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #B22222, #FFD700);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.timeline-date {
+    background: linear-gradient(135deg, #B22222, #FFD700);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
+}
+
+.timeline-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    margin-top: 3rem;
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+}
+
+.artist-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 4px solid #FFD700;
+}
+
+.artist-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.timeline-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #B22222;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.timeline-content p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Special Highlights Section */
+.special-highlights {
+    padding: 5rem 0;
+    background: white;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.highlight-card {
+    padding: 3rem;
+    border-radius: 25px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(178, 34, 34, 0.1), rgba(255, 215, 0, 0.1));
+    z-index: -1;
+}
+
+.left-highlight {
+    background: linear-gradient(rgba(178, 34, 34, 0.9), rgba(139, 0, 0, 0.9)), url('../images/women-bhajan.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.right-highlight {
+    background: linear-gradient(rgba(255, 215, 0, 0.9), rgba(255, 165, 0, 0.9)), url('../images/24hr-darshan.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #B22222;
+}
+
+.highlight-card:hover {
+    transform: translateY(-10px);
+}
+
+.highlight-number {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.highlight-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.highlight-date {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/* Sacred Poojas Section */
+.sacred-poojas {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.poojas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.pooja-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.pooja-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #B22222, #FFD700);
+}
+
+.pooja-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(178, 34, 34, 0.15);
+}
+
+.pooja-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 20px rgba(178, 34, 34, 0.2);
+}
+
+.pooja-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.pooja-card:hover .pooja-image img {
+    transform: scale(1.05);
+}
+
+.pooja-date {
+    background: linear-gradient(135deg, #B22222, #FFD700);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.pooja-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #B22222;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.pooja-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.pooja-time {
+    background: #f8f9fa;
+    color: #B22222;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    display: inline-block;
+    border: 2px solid #B22222;
+}
+
+/* Pallaki Utsava Section */
+.pallaki-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.pallaki-description p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.pallaki-timing-header {
+    display: flex;
+    justify-content: center;
+}
+
+.pallaki-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.pallaki-images img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(178, 34, 34, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.pallaki-images img:hover {
+    transform: scale(1.05);
+}
+
+
+.pallaki-image-description p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timing-card.pallaki {
+    background: linear-gradient(90deg, #B22222, #9e1d19);
+    color: white;
+    max-width: 300px;
+    width: 100%;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: row !important;
+    }
+    
+    .timeline-content {
+        width: calc(100% - 80px);
+        margin-left: 80px !important;
+        margin-right: 0 !important;
+    }
+    
+    .timeline-date {
+        left: 30px;
+        transform: translateX(-50%);
+    }
+    
+    .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-dates {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .ritual-main-container {
+        padding: 2rem;
+    }
+    
+    .ritual-main-title {
+        font-size: 2rem;
+    }
+    
+    .ritual-images-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .ritual-image-item {
+        padding: 1rem;
+    }
+    
+    .ritual-image-item img {
+        height: 180px;
+    }
+    
+    .ritual-timings {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .timing-card {
+        padding: 1.5rem;
+    }
+    
+    .performances-grid,
+    .poojas-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .performance-card,
+    .pooja-card {
+        padding: 2rem;
+    }
+    
+    .pooja-image {
+        height: 180px;
+    }
+    
+    .highlight-card {
+        padding: 2rem;
+    }
+    
+    .highlight-number {
+        font-size: 3rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .pallaki-header {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .pallaki-images {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .pallaki-images img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-content {
+        padding: 0 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .ritual-main-container {
+        padding: 1.5rem;
+    }
+    
+    .ritual-main-title {
+        font-size: 1.8rem;
+    }
+    
+    .ritual-image-item img {
+        height: 150px;
+    }
+    
+    .timing-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    
+    .timing-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .timeline-content {
+        padding: 1.5rem;
+        margin-left: 60px !important;
+    }
+    
+    .timeline-date {
+        left: 20px;
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .artist-photo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .pallaki-images img {
+        height: 150px;
+    }
+    
+    .timing-card {
+        padding: 1.5rem;
+    }
+    
+    .ritual-image-item img {
+        height: 150px;
+    }
+    
+    .pooja-image {
+        height: 150px;
+    }
+    
+    .timing-card {
+        padding: 1.5rem;
+    }
+} 
