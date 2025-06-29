@@ -36,7 +36,7 @@ nav {
 }
 
 .logo img {
-    height: 50px;
+    height: 70px;
     width: auto;
     transition: transform 0.3s ease;
 }
@@ -152,16 +152,22 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    nav {
+        padding: 0.5rem 1rem;
+    }
+
     .mobile-menu-btn {
         display: block;
         position: absolute;
         right: 1rem;
         top: 1rem;
+        z-index: 1001;
     }
 
     .nav-container {
         flex-direction: column;
         padding: 1rem 0;
+        position: relative;
     }
 
     .nav-links {
@@ -170,6 +176,9 @@ footer {
         flex-direction: column;
         gap: 0.5rem;
         padding: 1rem 0;
+        background-color: #B22222;
+        border-radius: 8px;
+        margin-top: 1rem;
     }
 
     .nav-links.active {
@@ -181,6 +190,7 @@ footer {
         text-align: center;
         padding: 0.8rem;
         border-radius: 8px;
+        margin: 0.2rem 0;
     }
 
     .logo img {
@@ -191,26 +201,45 @@ footer {
         flex-direction: column;
         gap: 1.5rem;
         max-width: 95%;
+        padding: 0 1rem;
     }
 
     .footer-section {
         text-align: center;
         flex: none;
+        padding: 0.5rem;
     }
 
-    .social-links {
-        gap: 1rem;
+    .footer-section .social-links {
+        justify-content: center;
+        gap: 1.5rem;
     }
 
     .social-links a {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+    }
+
+    .footer-menu {
+        align-items: center;
     }
 }
 
 @media (max-width: 480px) {
+    nav {
+        padding: 0.3rem 0.5rem;
+    }
+
+    .nav-container {
+        padding: 0.5rem 0;
+    }
+
     nav a {
-        font-size: 0.95rem;
-        padding: 0.7rem;
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+
+    .logo img {
+        height: 35px;
     }
 
     .footer-section h3 {
@@ -219,6 +248,33 @@ footer {
 
     .footer-section p {
         font-size: 0.85rem;
+    }
+
+    .social-links a {
+        font-size: 1.2rem;
+    }
+
+    footer {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 360px) {
+    nav a {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+
+    .logo img {
+        height: 30px;
+    }
+
+    .footer-section h3 {
+        font-size: 0.9rem;
+    }
+
+    .footer-section p {
+        font-size: 0.8rem;
     }
 }
 
