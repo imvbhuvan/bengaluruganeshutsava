@@ -108,6 +108,24 @@
     line-height: 1.6;
 }
 
+.about-intro {
+    font-size: 1.13rem;
+    color: #222;
+    margin-bottom: 1.2em;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+}
+.highlight-org {
+    color: #b8860b;
+    font-weight: 700;
+    background: #fffbe7;
+    padding: 2px 7px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(184,134,11,0.07);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.2px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .about-hero {

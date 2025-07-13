@@ -413,9 +413,9 @@ body {
 }
 
 .artist-photo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    width: 200px;
+    height: 140px;
+    border-radius: 12px;
     overflow: hidden;
     margin-bottom: 1rem;
     border: 4px solid #FFD700;
@@ -980,55 +980,6 @@ body {
     margin: 0;
 }
 
-.procession-highlights {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.highlight-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.5rem;
-    background: #f8f9fa;
-    border-radius: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.highlight-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(178, 34, 34, 0.15);
-}
-
-.highlight-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #B22222, #8B0000);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: #FFD700;
-    flex-shrink: 0;
-}
-
-.highlight-text h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: #B22222;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-}
-
-.highlight-text p {
-    color: #666;
-    line-height: 1.6;
-    margin: 0;
-}
-
 .procession-cta {
     text-align: center;
     padding: 2rem;
@@ -1227,4 +1178,140 @@ body {
         padding: 0.8rem 1.2rem;
         font-size: 0.9rem;
     }
+} 
+
+/* Carousel Styles */
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin: 32px 0;
+}
+.carousel-arrow {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    z-index: 2;
+}
+.carousel-arrow:hover {
+    background: #f0f0f0;
+}
+.carousel-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 720px;
+    min-width: 420px;
+}
+.carousel-image {
+    width: 640px;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+    margin-bottom: 20px;
+    transition: width 0.2s, height 0.2s;
+}
+@media (max-width: 900px) {
+    .carousel-slide {
+        max-width: 100vw;
+    }
+    .carousel-image {
+        width: 96vw;
+        max-width: 420px;
+        height: auto;
+        aspect-ratio: 4/3;
+        min-height: 220px;
+        max-height: 70vw;
+    }
+}
+@media (max-width: 700px) {
+    .carousel-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .carousel-slide {
+        max-width: 100vw;
+    }
+    .carousel-image {
+        width: 98vw;
+        max-width: 98vw;
+        height: auto;
+        aspect-ratio: 4/3;
+        min-height: 160px;
+        max-height: 70vw;
+    }
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+} 
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+.carousel-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    display: inline-block;
+}
+.carousel-dot.active {
+    background: #b8860b;
+    box-shadow: 0 2px 8px rgba(184,134,11,0.18);
+}
+@media (max-width: 700px) {
+    .carousel-dots {
+        gap: 8px;
+        margin-top: 10px;
+    }
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
+    }
+} 
+
+.procession-route-image img {
+    max-width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(178,34,34,0.13), 0 1.5px 8px rgba(0,0,0,0.08);
+    border: 3px solid #b8860b;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.procession-route-image img:hover {
+    transform: scale(1.025) rotate(-1deg);
+    box-shadow: 0 12px 40px rgba(178,34,34,0.18), 0 2px 12px rgba(0,0,0,0.10);
+    border-color: #1a237e;
+}
+.procession-route-image div {
+    margin-top: 0.75rem;
+    color: #B22222;
+    font-size: 1.08rem;
+    font-family: 'Poppins', sans-serif;
+    background: #fffbe7;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 7px 18px;
+    box-shadow: 0 1px 6px rgba(184,134,11,0.08);
+    font-weight: 500;
 } 
