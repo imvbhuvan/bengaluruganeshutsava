@@ -159,115 +159,35 @@
             
             <!-- Venue Selection Buttons -->
             <div class="venue-buttons">
-                <button class="venue-btn" onclick="showVenue('venue1')">Performances at APS College Grounds</button>
-                <button class="venue-btn" onclick="showVenue('venue2')">Performances at National College Grounds</button>
+                <button class="venue-btn" data-venue="venue1">Performances at APS College Grounds</button>
+                <button class="venue-btn" data-venue="venue2">Performances at National College Grounds</button>
             </div>
             
-            <!-- Venue 1 Carousel -->
-            <div id="venue1-carousel" class="carousel-container" style="display: none;">
-                <button class="carousel-arrow left" onclick="moveCarousel('venue1', -1)">&#8592;</button>
-                <div class="carousel-slide">
-                    <img src="images/63rdbgu/artists/mdpallavi.jpg" alt="Venue 1 Performance 1" class="carousel-image">
+            <!-- Venue 1 Slideshow (Horizontal Scroll) -->
+            <div id="venue1-slideshow" class="slideshow-scroll-container" style="display: none;">
+                <button class="slideshow-arrow left" onclick="scrollSlideshow('venue1', -1)">&#8592;</button>
+                <div class="slideshow-scroll-track" id="venue1-scroll-track">
+                    <!-- Images will be injected by JS -->
                 </div>
-                <button class="carousel-arrow right" onclick="moveCarousel('venue1', 1)">&#8594;</button>
+                <button class="slideshow-arrow right" onclick="scrollSlideshow('venue1', 1)">&#8594;</button>
             </div>
-            <div id="venue1-dots" class="carousel-dots" style="display: none;"></div>
 
-            <!-- Venue 2 Carousel -->
-            <div id="venue2-carousel" class="carousel-container" style="display: none;">
-                <button class="carousel-arrow left" onclick="moveCarousel('venue2', -1)">&#8592;</button>
-                <div class="carousel-slide">
-                    <img src="images/63rdbgu/artists/ravichandran.jpg" alt="Venue 2 Performance 1" class="carousel-image">
+            <!-- Venue 2 Slideshow (Horizontal Scroll) -->
+            <div id="venue2-slideshow" class="slideshow-scroll-container" style="display: flex;">
+                <button class="slideshow-arrow left" onclick="scrollSlideshow('venue2', -1)">&#8592;</button>
+                <div class="slideshow-scroll-track" id="venue2-scroll-track">
+                    <!-- Images will be injected by JS -->
                 </div>
-                <button class="carousel-arrow right" onclick="moveCarousel('venue2', 1)">&#8594;</button>
+                <button class="slideshow-arrow right" onclick="scrollSlideshow('venue2', 1)">&#8594;</button>
             </div>
-            <div id="venue2-dots" class="carousel-dots" style="display: none;"></div>
 
-            <script>
-            // Venue button functionality
-            function showVenue(venueId) {
-                // Remove active class from all venue buttons
-                const venueButtons = document.querySelectorAll('.venue-btn');
-                venueButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to the clicked button
-                const clickedButton = event.target;
-                clickedButton.classList.add('active');
-                // Hide all carousels and dots
-                document.getElementById('venue1-carousel').style.display = 'none';
-                document.getElementById('venue2-carousel').style.display = 'none';
-                document.getElementById('venue1-dots').style.display = 'none';
-                document.getElementById('venue2-dots').style.display = 'none';
-                // Show the selected venue carousel and dots
-                if (venueId === 'venue1') {
-                    document.getElementById('venue1-carousel').style.display = 'flex';
-                    document.getElementById('venue1-dots').style.display = 'flex';
-                } else if (venueId === 'venue2') {
-                    document.getElementById('venue2-carousel').style.display = 'flex';
-                    document.getElementById('venue2-dots').style.display = 'flex';
-                }
-            }
+            <!-- Slideshow Modal -->
+            <div id="slideshow-modal" class="slideshow-modal" style="display:none;">
+                <span class="slideshow-modal-close" onclick="closeSlideshowModal()">&times;</span>
+                <img class="slideshow-modal-content" id="slideshow-modal-img">
+            </div>
 
-            // Carousel logic
-            const carousels = {
-                venue1: [
-                    {img: 'images/63rdbgu/artists/mdpallavi.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. M.D. Pallavi', date: 'Aug 27, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/indulakshmi.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Lakshmi Nagaraj & Smt. Indu Nagaraj', date: 'Aug 28, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/sooryagayathri.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Soorya Gayathri', date: 'Aug 29, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/sunitha.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Sunitha', date: 'Aug 30, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/sandeepnarayan.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Sandeep Narayan', date: 'Aug 31, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/praveen godkindi.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Praveen Godkindi', date: 'Sep 1, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/63flutes.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. 63 Flutes', date: 'Sep 2, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/vinayvaranasi.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Vinay Varanasi', date: 'Sep 3, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/jagadeesh.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Jagadeesh', date: 'Sep 4, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/savithakka.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Savitha Kaka', date: 'Sep 5, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/balasubramanya.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Balasubramanya', date: 'Sep 6, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/gangasasidharan.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Gangasasidharan', date: 'Sep 7, 2025', time: '7:00 PM onwards'}
-                ],
-                venue2: [
-                    {img: 'images/63rdbgu/artists/ravichandran.jpg', performance: 'Crazy Star Ravichandran', artist: 'Ravichandran & Mayur', date: 'Sep 1, 2025', time: '7:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/vijayprakash.jpg', performance: 'Drums Performance', artist: 'Smt. Vijay Prakash', date: 'Sep 2, 2025', time: '5:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/rajeshkrishnan.jpg', performance: 'Drums Performance', artist: 'Smt. Rajesh Krishnan', date: 'Sep 3, 2025', time: '5:00 PM onwards'},
-                    {img: 'images/63rdbgu/artists/rdx.jpg', performance: 'Drums Performance', artist: 'Smt. RDX', date: 'Sep 4, 2025', time: '5:00 PM onwards'}
-                ]
-            };
-            let carouselIndices = {venue1: 0, venue2: 0};
-
-            function moveCarousel(venue, direction) {
-                const items = carousels[venue];
-                carouselIndices[venue] = (carouselIndices[venue] + direction + items.length) % items.length;
-                updateCarousel(venue);
-            }
-
-            function goToCarouselSlide(venue, idx) {
-                carouselIndices[venue] = idx;
-                updateCarousel(venue);
-            }
-
-            function updateCarousel(venue) {
-                const idx = carouselIndices[venue];
-                const slide = document.querySelector(`#${venue}-carousel .carousel-slide`);
-                const data = carousels[venue][idx];
-                slide.querySelector('img').src = data.img;
-                slide.querySelector('img').alt = data.performance + ' - ' + data.artist;
-                // Update dots
-                const dotsContainer = document.getElementById(`${venue}-dots`);
-                if (dotsContainer) {
-                    dotsContainer.innerHTML = '';
-                    carousels[venue].forEach((item, i) => {
-                        const dot = document.createElement('span');
-                        dot.className = 'carousel-dot' + (i === idx ? ' active' : '');
-                        dot.onclick = () => goToCarouselSlide(venue, i);
-                        dotsContainer.appendChild(dot);
-                    });
-                }
-            }
-
-            // Initialize carousels and dots on page load
-            document.addEventListener('DOMContentLoaded', function() {
-                updateCarousel('venue1');
-                updateCarousel('venue2');
-            });
-            </script>
+    <script src="scripts/63rdbgu.js"></script>
         </div>
     </section>
 
@@ -277,7 +197,7 @@
             <h2 class="section-title">This Year's Sacred Spectacles</h2>
             <div class="highlights-grid">
                 <div class="highlight-card left-highlight">
-                    <div class="highlight-number">10,000+</div>
+                    <div class="highlight-number">25,000+</div>
                     <h3>Sri Ganesha Pancharathna Aradhane</h3>
                     <p>Experience the divine power of collective devotion as over 10,000 women come together to sing sacred stotras and bhajans, creating an atmosphere of unparalleled spiritual energy.</p>
                     <div class="highlight-date">August 31, 2025 - 7:00 AM</div>
@@ -411,7 +331,7 @@
                     <a href="https://www.facebook.com/BengaluruGaneshUtsava?rdid=ej8LYQ4lG8cMJiPI&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BhWuiuvGp%2F%23" target="_blank" title="Facebook">
                         <i class="fab fa-facebook"></i>
                     </a>
-                    <a href="https://www.facebook.com/BengaluruGaneshUtsava?rdid=ej8LYQ4lG8cMJiPI&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BhWuiuvGp%2F%23" target="_blank" title="Facebook">
+                    <a href="https://www.whatsapp.com/channel/0029VbAELHt1HspvXAZ7Qm1d" target="_blank" title="whatsapp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -426,6 +346,8 @@
                     <a href="recognitions.html">Recognitions</a>
                     <a href="63rdbgu.html" class="active">63rd BGU</a>
                     <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="returns-refund-policy.html">Returns & Refund Policy</a>
+                    <a href="terms-conditions-policy.html">Terms & Conditions</a>
                     <a href="gallery.html">Gallery</a>
                 </div>
             </div>
@@ -440,47 +362,6 @@
             <p>&copy; 2025 BGU. All rights reserved.</p>
         </div>
     </footer>
-    <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const navLinks = document.querySelector('.nav-links');
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            
-            if (!navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
-                navLinks.classList.remove('active');
-            }
-        });
-
-        // Venue button functionality
-        function showVenue(venueId) {
-            // Remove active class from all venue buttons
-            const venueButtons = document.querySelectorAll('.venue-btn');
-            venueButtons.forEach(btn => btn.classList.remove('active'));
-
-            // Add active class to the clicked button
-            const clickedButton = event.target;
-            clickedButton.classList.add('active');
-
-            // Hide all carousels and dots
-            document.getElementById('venue1-carousel').style.display = 'none';
-            document.getElementById('venue2-carousel').style.display = 'none';
-            document.getElementById('venue1-dots').style.display = 'none';
-            document.getElementById('venue2-dots').style.display = 'none';
-
-            // Show the selected venue carousel and dots
-            if (venueId === 'venue1') {
-                document.getElementById('venue1-carousel').style.display = 'flex';
-                document.getElementById('venue1-dots').style.display = 'flex';
-            } else if (venueId === 'venue2') {
-                document.getElementById('venue2-carousel').style.display = 'flex';
-                document.getElementById('venue2-dots').style.display = 'flex';
-            }
-        }
-    </script>
 </body>
 </html>
