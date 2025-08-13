@@ -289,60 +289,75 @@
 
 @media (max-width: 768px) {
     .about-hero {
-        height: 500px;
+        height: 400px;
+        padding: 0 15px;
     }
 
     .about-hero h1 {
-        font-size: 2.5em;
+        font-size: clamp(2rem, 6vw, 3.5rem);
+        margin-bottom: 15px;
     }
 
     .about-hero p {
-        font-size: 1.1em;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        max-width: 100%;
     }
 
     .about-content {
-        padding: 60px 0;
+        padding: 40px 0;
+    }
+
+    .container {
+        padding: 0 15px;
     }
 
     .about-text-section {
         margin-bottom: 40px;
     }
 
+    .about-intro {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
     .about-image-section {
         margin-bottom: 40px;
     }
 
-    .mission-vision-section {
-        margin-top: 30px;
+    .image-container {
+        aspect-ratio: auto;
+        height: 250px;
     }
 
     .mission-vision-grid {
-        gap: 20px;
+        grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
-    .mission-card, .vision-card {
-        padding: 25px;
+    .mission-card,
+    .vision-card {
+        padding: 2rem;
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .values-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 1.5rem;
     }
 
     .value-card {
-        padding: 20px 15px;
-    }
-
-    .values-section h2 {
-        font-size: 2em;
-    }
-
-    .values-conclusion p {
-        font-size: 1.2em;
-    }
-
-    .image-container {
-        aspect-ratio: 16/9;
+        padding: 1.5rem;
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }
 

@@ -11,16 +11,18 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <nav>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <nav aria-label="Main navigation">
         <div class="nav-container">
             <a href="main.html" class="logo">
                 <img src="images/logo.png" alt="BGU Logo">
             </a>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </button>
             <div class="nav-links">
-                <a href="main.html" class="active">Home</a>
+                <a href="main.html" class="active" aria-current="page">Home</a>
                 <a href="history.html">History</a>
                 <a href="about.html">About Us</a>
                 <a href="milestones.html">Milestones</a>
@@ -37,7 +39,8 @@
         </div>
     </div>
 
-    <section class="hero">
+    <main id="main-content">
+        <section class="hero">
         <h1>63rd Bengluru Ganesh Utsava </h1>
         <h4>August 27 - September 06, 2025</h4>
         <p>Witness Culture Unfold !! </p>
@@ -104,6 +107,7 @@
         <div class="gallery-divider"></div>
         <a href="63rdbgu.html" class="gallery-link-text">Click here for 63rd BGU Schedule</a>
     </section>
+    </main>
 
     <footer id="contact-section">
         <div class="footer-content">
