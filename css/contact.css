@@ -1,0 +1,88 @@
+/* contact.css - Styles specific to the Contact Us page */
+
+.contact-hero {
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem 1rem;
+    background: #f7f7f7;
+}
+.contact-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #b48a1a;
+    font-family: 'Playfair Display', serif;
+}
+.contact-hero p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0;
+}
+
+.contact-form-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem 3rem 1rem;
+    background: #fff;
+}
+.contact-form {
+    background: #faf8f2;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(180,138,26,0.08);
+    padding: 2rem 2.5rem;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #b48a1a;
+    font-family: 'Poppins', sans-serif;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e0c97f;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    background: #fff;
+    color: #222;
+    transition: border-color 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #b48a1a;
+    outline: none;
+}
+.submit-btn {
+    background: #b48a1a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(180,138,26,0.08);
+}
+.submit-btn:hover,
+.submit-btn:focus {
+    background: #a07a17;
+}
+
+@media (max-width: 600px) {
+    .contact-form {
+        padding: 1.2rem 0.5rem;
+    }
+    .contact-hero h1 {
+        font-size: 2rem;
+    }
+}
