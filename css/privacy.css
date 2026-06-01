@@ -1,24 +1,50 @@
 /* Privacy Policy Page Styles */
 .privacy-policy-section {
     max-width: 800px;
-    margin: 3rem auto 2rem auto;
-    padding: 2rem;
-    background: #fff7ef;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    margin: 4rem auto;
+    padding: 3rem;
+    background: var(--card);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid var(--card-line);
+    border-top: 5px solid var(--gold-bright);
 }
 .privacy-policy-section h1 {
     font-family: 'Playfair Display', serif;
-    color: #B22222;
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
+    color: var(--card-heading);
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
+.privacy-policy-section h2,
+.privacy-policy-section h3,
+.privacy-policy-section h4,
+.privacy-policy-section h5,
+.privacy-policy-section h6 {
+    color: var(--card-heading);
+}
 .privacy-policy-section p {
-    color: #333;
+    color: var(--card-text);
     font-size: 1.1rem;
     line-height: 1.8;
     text-align: left;
+}
+.privacy-policy-section ul,
+.privacy-policy-section ol,
+.privacy-policy-section li {
+    color: var(--card-text);
+}
+.privacy-policy-section small,
+.privacy-policy-section .muted {
+    color: var(--card-muted);
+}
+.privacy-policy-section a {
+    color: var(--card-heading);
+    text-decoration: underline;
+}
+.privacy-policy-section a:hover {
+    color: var(--saffron);
+    text-decoration: underline;
 }
 
 /* Mobile Responsive Design */

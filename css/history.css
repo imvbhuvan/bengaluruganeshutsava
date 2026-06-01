@@ -1,13 +1,13 @@
 /* Video Section Styles */
 .video-section {
     padding: 80px 20px;
-    background-color: #f8f9fa;
+    background-color: var(--bg-2);
 }
 
 .video-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
-    color: #8B0000; /* Darker red color */
+    color: var(--gold-soft);
     text-align: center;
     margin-bottom: 40px;
     display: block;
@@ -19,7 +19,7 @@
     display: block;
     width: 120px;
     height: 4px;
-    background: #790d0d; /* Matching darker red */
+    background: var(--maroon-deep);
     margin: 20px auto;
     clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
 }
@@ -46,7 +46,7 @@
 .video-container .watch-text {
     margin-top: 1rem;
     font-family: 'Playfair Display', serif;
-    color: #333;
+    color: var(--muted);
     font-size: 1.2rem;
     font-weight: 500;
 }
@@ -58,16 +58,21 @@
 
 /* History Section Styles */
 .history-section {
-    padding: 80px 20px;
-    background-color: #fff;
+    padding: 80px 40px;
+    background-color: var(--card);
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 40px auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--gold-bright);
+    border: 1px solid var(--card-line);
+    border-top: 5px solid var(--gold-bright);
 }
 
 .history-section h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: #333;
+    font-size: 3rem;
+    color: var(--card-heading);
     text-align: center;
     margin-bottom: 40px;
     position: relative;
@@ -78,15 +83,15 @@
     display: block;
     width: 120px;
     height: 4px;
-    background: #c41e3a;
+    background: var(--gold-bright);
     margin: 20px auto;
-    clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+    border-radius: 2px;
 }
 
 .history-content {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 50px;
 }
 
 .history-text {
@@ -95,10 +100,10 @@
 }
 
 .history-text p {
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: #555;
-    margin-bottom: 20px;
+    font-size: 1.15em;
+    line-height: 1.9;
+    color: var(--card-text);
+    margin-bottom: 25px;
     text-align: justify;
 }
 
@@ -110,25 +115,25 @@
 
 .history-image img {
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .history-image img:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
 /* First Utsava Section */
 .first-utsava-section {
     padding: 80px 20px;
-    background-color: #f8f9fa;
+    background-color: var(--bg);
 }
 
 .first-utsava-section h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
-    color: #333;
+    color: var(--gold-soft);
     text-align: center;
     margin-bottom: 40px;
     position: relative;
@@ -139,7 +144,7 @@
     display: block;
     width: 120px;
     height: 4px;
-    background: #c41e3a;
+    background: var(--maroon);
     margin: 20px auto;
     clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
 }
@@ -153,19 +158,19 @@
 .utsava-content p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #555;
+    color: var(--muted);
 }
 
 /* Evolution Section */
 .evolution-section {
     padding: 80px 20px;
-    background-color: #fff;
+    background: linear-gradient(180deg, var(--bg), var(--bg-2));
 }
 
 .evolution-section h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
-    color: #333;
+    color: var(--gold-soft);
     text-align: center;
     margin-bottom: 40px;
     position: relative;
@@ -176,7 +181,7 @@
     display: block;
     width: 120px;
     height: 4px;
-    background: #c41e3a;
+    background: var(--maroon);
     margin: 20px auto;
     clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
 }
@@ -189,18 +194,18 @@
 .evolution-content p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #555;
+    color: var(--muted);
     margin-bottom: 20px;
     text-align: justify;
 }
 
 .evolution-content h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    color: #333;
-    margin: 40px 0 20px;
+    font-size: 2rem;
+    color: var(--gold-soft);
+    margin: 50px 0 25px;
     position: relative;
-    padding-left: 20px;
+    padding-left: 25px;
 }
 
 .evolution-content h3::before {
@@ -209,10 +214,10 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 4px;
-    height: 24px;
-    background: #c41e3a;
-    border-radius: 2px;
+    width: 5px;
+    height: 30px;
+    background: var(--gold-bright);
+    border-radius: 3px;
 }
 
 /* Responsive Design */
@@ -304,4 +309,4 @@
     .video-container iframe {
         height: 300px;
     }
-} 
+}

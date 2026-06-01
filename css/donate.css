@@ -1,35 +1,80 @@
 /* Donate Page Styles */
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
 .donate-section {
     max-width: 900px;
-    margin: 3rem auto 2rem auto;
-    padding: 2rem;
-    background: #fff7ef;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    margin: 4rem auto;
+    padding: 3rem;
+    background: var(--card);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    border: 1px solid var(--card-line);
+    border-top: 5px solid var(--gold-bright);
 }
 .donate-section h1 {
     font-family: 'Playfair Display', serif;
-    color: #B22222;
-    font-size: 2.2rem;
+    color: var(--card-heading);
+    font-size: 2.8rem;
     margin-bottom: 2rem;
     text-align: center;
 }
 .donate-table-container {
     overflow-x: auto;
+    border: 1px solid var(--card-line);
+    border-radius: 16px;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.15);
 }
 .donate-table {
     width: 100%;
     border-collapse: collapse;
+    font-family: 'Poppins', sans-serif;
 }
-.donate-table th {
-    padding: 0.8rem;
-    border: 1px solid #B22222;
-    background: #B22222;
-    color: #FFD700;
+
+/* Header row */
+.donate-table thead th {
+    padding: 1.1rem 1.25rem;
+    background: linear-gradient(135deg, var(--maroon-deep), var(--maroon));
+    color: var(--gold-soft);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 2px solid var(--gold);
+    white-space: nowrap;
 }
-.donate-table td {
-    padding: 0.7rem;
-    border: 1px solid #B22222;
+.donate-table thead th:nth-child(2) { text-align: left; }
+
+/* Body cells */
+.donate-table tbody td {
+    padding: 1rem 1.25rem;
+    color: var(--card-text);
+    border-bottom: 1px solid var(--card-line);
+    vertical-align: middle;
+    text-align: center;
+}
+.donate-table tbody tr:last-child td { border-bottom: none; }
+
+/* Zebra striping + hover */
+.donate-table tbody tr:nth-child(even) td { background: var(--card-2); }
+.donate-table tbody tr:hover td { background: var(--card-2); }
+
+/* Per-column treatment */
+.donate-table tbody td:nth-child(1) { color: var(--card-muted); font-weight: 600; }
+.donate-table tbody td:nth-child(2) {
+    text-align: left;
+    line-height: 1.55;
+    font-size: 0.97rem;
+}
+.donate-table tbody td:nth-child(3) { color: var(--card-muted); font-size: 0.9rem; }
+.donate-table tbody td:nth-child(4) {
+    color: var(--card-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    white-space: nowrap;
 }
 .donate-table .donation-amount-col {
     width: 150px;
@@ -68,7 +113,7 @@
 .donate-custom-text {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    color: #B22222;
+    color: var(--text);
     text-align: center;
     font-size: 1.2rem;
     font-family: 'Poppins', sans-serif;
@@ -246,32 +291,33 @@
 
 .donate-btn {
     display: inline-block;
-    background-color: #B22222;
-    color: #FFD700;
-    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--saffron) 100%);
+    color: var(--maroon-deep);
+    padding: 0.55rem 1.3rem;
     text-decoration: none;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: 2px solid #B22222;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), filter 0.25s var(--ease);
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .donate-btn:hover {
-    background-color: #FFD700;
-    color: #B22222;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+    filter: brightness(1.08);
 }
 
 .donate-btn:focus {
-    outline: 2px solid #FFD700;
+    outline: 2px solid var(--gold-bright);
     outline-offset: 2px;
-    background-color: #FFD700;
-    color: #B22222;
+    background-color: var(--gold-bright);
+    color: var(--maroon);
 }
 
 .donate-btn:focus-visible {
-    outline: 2px solid #FFD700;
+    outline: 2px solid var(--gold-bright);
     outline-offset: 2px;
 }

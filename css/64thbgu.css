@@ -1,0 +1,906 @@
+/* =====================================================================
+   64th Bengaluru Ganesha Utsava — Immersive / Cinematic redesign
+   Dark, photo-led, full-bleed. Text is overlaid on imagery; each
+   section has its own distinct layout (bands, tiles, parallax, rail).
+   Nav & footer come from common.css and are left untouched.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. Tokens
+   --------------------------------------------------------------------- */
+:root {
+    --maroon: #b22222;
+    --maroon-deep: #7a1212;
+    --gold: #d8a93f;
+    --gold-bright: #f4c430;
+    --gold-soft: #ecd596;
+    --saffron: #e07b30;
+
+    --bg: #320f0c;          /* deep warm maroon */
+    --bg-2: #421612;
+    --panel: rgba(255, 255, 255, 0.05);
+    --panel-line: rgba(236, 213, 150, 0.22);
+
+    --text: #f4ece0;
+    --muted: #c6b3a3;
+
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Poppins', system-ui, sans-serif;
+
+    --r-sm: 14px;
+    --r: 20px;
+    --r-lg: 28px;
+    --r-pill: 999px;
+
+    --sh: 0 24px 60px rgba(0, 0, 0, 0.45);
+    --sh-lg: 0 40px 90px rgba(0, 0, 0, 0.55);
+
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --t: 0.5s var(--ease);
+    --container: 1180px;
+    --pad: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+/* ---------------------------------------------------------------------
+   2. Base
+   --------------------------------------------------------------------- */
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    margin: 0;
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+section[id] { scroll-margin-top: 84px; }
+
+/* Section header (centered kicker + title) */
+.section-head {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-kicker {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4.8vw, 3.4rem);
+    line-height: 1.12;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+    position: relative;
+    padding-bottom: 1.4rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ---------------------------------------------------------------------
+   3. Hero — full-bleed, content anchored bottom-left
+   --------------------------------------------------------------------- */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.06);
+    animation: kenburns 18s ease-out forwards;
+}
+
+.hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(20, 10, 8, 0.35) 0%, transparent 35%),
+        linear-gradient(0deg, rgba(20, 10, 8, 0.95) 5%, rgba(20, 10, 8, 0.35) 45%, transparent 75%);
+}
+
+.hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 1.5rem clamp(4rem, 10vh, 8rem);
+}
+
+.hero-subtitle {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin: 0 0 1rem;
+    font-weight: 500;
+}
+
+.hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.05;
+    font-weight: 700;
+    margin: 0 0 1.75rem;
+    color: #fff;
+    text-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(90deg, #fff 30%, var(--gold-soft));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 768px) {
+    .hero-title { white-space: nowrap; }
+}
+
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+}
+
+.hero-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.25rem;
+    border: 1px solid var(--panel-line);
+    border-radius: var(--r-pill);
+    background: rgba(20, 10, 8, 0.45);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    font-size: clamp(0.82rem, 1.8vw, 0.98rem);
+    color: var(--text);
+}
+
+.hero-chip i { color: var(--gold-bright); }
+
+.hero-scroll {
+    position: absolute;
+    bottom: 1.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    text-decoration: none;
+    animation: bob 2s ease-in-out infinite;
+}
+
+.hero-scroll:hover { color: var(--gold-bright); border-color: var(--gold); }
+
+@keyframes kenburns { to { transform: scale(1); } }
+@keyframes bob {
+    0%, 100% { transform: translate(-50%, 0); opacity: 0.7; }
+    50% { transform: translate(-50%, 8px); opacity: 1; }
+}
+
+/* ---------------------------------------------------------------------
+   4. Sacred Daily Rituals — full-bleed photo bands, text overlaid
+   --------------------------------------------------------------------- */
+.rituals {
+    padding: var(--pad) 0;
+    background: var(--bg);
+}
+
+.band-overline {
+    text-align: center;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+    color: var(--gold);
+    margin: clamp(2.5rem, 5vw, 4rem) 0 1.75rem;
+}
+
+.band-overline::before,
+.band-overline::after {
+    content: '·';
+    color: var(--gold);
+    margin: 0 0.6rem;
+    opacity: 0.6;
+}
+
+.ritual-band {
+    position: relative;
+    min-height: 76vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.band-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.band-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(20, 10, 8, 0.94) 0%, rgba(20, 10, 8, 0.6) 42%, rgba(20, 10, 8, 0.12) 80%);
+}
+
+.ritual-band.align-right .band-scrim {
+    background: linear-gradient(270deg, rgba(20, 10, 8, 0.94) 0%, rgba(20, 10, 8, 0.6) 42%, rgba(20, 10, 8, 0.12) 80%);
+}
+
+.band-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ritual-band.align-right .band-content {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.band-content > * { max-width: 580px; }
+
+.band-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.5rem 1.15rem;
+    border-radius: var(--r-pill);
+    background: linear-gradient(135deg, var(--maroon), var(--maroon-deep));
+    color: var(--gold-soft);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.25rem;
+    border: 1px solid var(--panel-line);
+}
+
+.band-content h3 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.08;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1rem;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.band-content p {
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    color: var(--text);
+    margin: 0;
+    opacity: 0.92;
+}
+
+.band-inset {
+    position: absolute;
+    z-index: 3;
+    left: clamp(1.5rem, 8vw, 9rem);
+    bottom: 8%;
+    width: clamp(180px, 22vw, 320px);
+    height: clamp(180px, 22vw, 320px);
+    object-fit: cover;
+    border-radius: var(--r);
+    border: 4px solid rgba(236, 213, 150, 0.6);
+    box-shadow: var(--sh-lg);
+}
+
+/* ---------------------------------------------------------------------
+   5. Divine Performances — tall photo tiles, staggered
+   --------------------------------------------------------------------- */
+.performances {
+    padding: var(--pad) 0;
+    background: linear-gradient(180deg, var(--bg), var(--bg-2));
+}
+
+.perf-row {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.perf-tile {
+    position: relative;
+    min-height: 540px;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: var(--sh);
+    transition: transform var(--t), box-shadow var(--t);
+}
+
+.perf-tile:nth-child(2) { transform: translateY(-2.5rem); }
+.perf-tile:nth-child(2):hover { transform: translateY(-3.25rem); }
+
+.perf-tile img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--ease);
+}
+
+.perf-tile:hover { box-shadow: var(--sh-lg); }
+.perf-tile:hover img { transform: scale(1.07); }
+
+.perf-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(15, 7, 5, 0.96) 8%, rgba(15, 7, 5, 0.4) 48%, transparent 78%);
+}
+
+.perf-text {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+}
+
+.perf-time {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: var(--r-pill);
+    background: linear-gradient(135deg, var(--gold-bright), var(--saffron));
+    color: #3a1305;
+    font-weight: 700;
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
+}
+
+.perf-text h3 {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    color: #fff;
+    margin: 0 0 0.75rem;
+    font-weight: 600;
+}
+
+.perf-text p {
+    color: var(--muted);
+    font-size: 0.96rem;
+    margin: 0;
+}
+
+/* ---------------------------------------------------------------------
+   6. 11 Days of Performances — slideshow band (JS-driven)
+   --------------------------------------------------------------------- */
+.artists {
+    padding: var(--pad) 0;
+    background: var(--bg-2);
+}
+
+.slideshow-scroll-container {
+    position: relative;
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: 320px;
+    padding: 0.5rem 0;
+}
+
+.slideshow-scroll-container::before,
+.slideshow-scroll-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 1;
+    pointer-events: none;
+}
+.slideshow-scroll-container::before { left: 0; background: linear-gradient(90deg, var(--bg-2), transparent); }
+.slideshow-scroll-container::after { right: 0; background: linear-gradient(270deg, var(--bg-2), transparent); }
+
+.slideshow-scroll-track {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    padding: 1rem 1.5rem;
+}
+.slideshow-scroll-track::-webkit-scrollbar { display: none; }
+
+.slideshow-scroll-image {
+    flex-shrink: 0;
+    width: 300px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: var(--r);
+    border: 3px solid transparent;
+    box-shadow: var(--sh);
+    cursor: pointer;
+    transition: transform var(--t), border-color var(--t), box-shadow var(--t);
+}
+.slideshow-scroll-image:hover {
+    transform: translateY(-8px) scale(1.03);
+    border-color: var(--gold-soft);
+    box-shadow: var(--sh-lg);
+}
+
+.slideshow-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 52px;
+    height: 52px;
+    border: 1px solid var(--panel-line);
+    border-radius: 50%;
+    background: rgba(20, 10, 8, 0.7);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    color: var(--gold-soft);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--t), color var(--t), transform var(--t);
+}
+.slideshow-arrow:hover {
+    background: linear-gradient(135deg, var(--maroon), var(--maroon-deep));
+    color: var(--gold-bright);
+    transform: translateY(-50%) scale(1.08);
+}
+.slideshow-arrow.left { left: 10px; }
+.slideshow-arrow.right { right: 10px; }
+
+.slideshow-modal {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 1002;
+    background: rgba(10, 4, 3, 0.92);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    animation: fade 0.25s ease;
+}
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+.slideshow-modal-content {
+    max-width: 92vw;
+    max-height: 84vh;
+    border-radius: var(--r);
+    border: 3px solid var(--gold-soft);
+    box-shadow: var(--sh-lg);
+    object-fit: contain;
+}
+
+.slideshow-modal-close {
+    position: absolute;
+    top: 2vw;
+    right: 3vw;
+    color: var(--gold-soft);
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1003;
+    transition: color var(--t), transform var(--t);
+}
+.slideshow-modal-close:hover { color: var(--gold-bright); transform: scale(1.1); }
+
+/* ---------------------------------------------------------------------
+   7. Special Highlight — full-bleed parallax feature
+   --------------------------------------------------------------------- */
+.highlight-feature {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #2a0f0a url('../images/63rdbgu/women-bhajan.jpg') center / cover fixed;
+    overflow: hidden;
+}
+
+.feature-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 40%, rgba(178, 34, 34, 0.4), transparent 60%),
+        linear-gradient(180deg, rgba(20, 10, 8, 0.85), rgba(20, 10, 8, 0.92));
+}
+
+.feature-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    padding: 3rem 1.5rem;
+}
+
+.feature-inner .section-kicker { color: var(--gold); }
+
+.feature-number {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 11vw, 7rem);
+    line-height: 1;
+    font-weight: 700;
+    color: var(--gold-bright);
+    text-shadow: 0 6px 40px rgba(0, 0, 0, 0.4);
+    margin: 0.5rem 0 1rem;
+}
+
+.feature-title {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    color: #fff;
+    margin: 0 0 1.25rem;
+    font-weight: 600;
+}
+
+.feature-inner p {
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    color: var(--text);
+    opacity: 0.92;
+    max-width: 600px;
+    margin: 0 auto 1.75rem;
+}
+
+.feature-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.65rem 1.5rem;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--panel-line);
+    background: rgba(255, 255, 255, 0.08);
+    font-weight: 600;
+    color: var(--gold-soft);
+}
+
+/* ---------------------------------------------------------------------
+   8. Pancha Maha Poojas — horizontal scroll-snap rail
+   --------------------------------------------------------------------- */
+.poojas {
+    padding: var(--pad) 0;
+    background: linear-gradient(180deg, var(--bg-2), var(--bg));
+}
+
+.pooja-rail {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 1.5rem;
+}
+
+.pooja-card {
+    position: relative;
+    min-height: 470px;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: var(--sh);
+    transition: transform var(--t), box-shadow var(--t);
+}
+
+.pooja-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--ease);
+}
+
+.pooja-card:hover { transform: translateY(-8px); box-shadow: var(--sh-lg); }
+.pooja-card:hover img { transform: scale(1.07); }
+
+.pooja-scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(15, 7, 5, 0.96) 10%, rgba(15, 7, 5, 0.35) 55%, rgba(15, 7, 5, 0.15) 100%);
+}
+
+.pooja-text {
+    position: relative;
+    z-index: 2;
+    padding: 1.75rem;
+}
+
+.pooja-date {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 0.75rem;
+}
+
+.pooja-text h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 0 0 0.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.pooja-text p {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin: 0 0 1.1rem;
+}
+
+.pooja-time {
+    display: inline-block;
+    padding: 0.45rem 1.2rem;
+    border: 1.5px solid var(--gold);
+    border-radius: var(--r-pill);
+    color: var(--gold-soft);
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+/* ---------------------------------------------------------------------
+   9. Grand Procession — dark cinematic finale
+   --------------------------------------------------------------------- */
+.procession {
+    padding: var(--pad) 0;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(178, 34, 34, 0.35), transparent 55%),
+        linear-gradient(180deg, #0e0605, #1a0a07);
+}
+
+.proc-stats {
+    max-width: var(--container);
+    margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+    padding: 0 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.proc-stat {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.5rem 2.25rem;
+    border: 1px solid var(--panel-line);
+    border-radius: var(--r);
+    background: var(--panel);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    min-width: 280px;
+}
+
+.proc-stat i {
+    font-size: 1.6rem;
+    color: var(--gold-bright);
+}
+
+.proc-stat-text strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--gold-soft);
+}
+
+.proc-stat-text span {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.proc-feature {
+    max-width: var(--container);
+    margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: center;
+}
+
+.proc-desc h3 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--gold-soft);
+    margin: 0 0 1rem;
+    font-weight: 600;
+}
+
+.proc-desc p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.proc-map {
+    margin: 0;
+}
+
+.proc-map img {
+    width: 100%;
+    border-radius: var(--r);
+    border: 3px solid var(--gold-soft);
+    box-shadow: var(--sh);
+    transition: transform var(--t);
+}
+.proc-map img:hover { transform: scale(1.02); }
+
+.proc-map figcaption {
+    margin-top: 1rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    border-radius: var(--r-sm);
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.6;
+}
+.proc-map figcaption strong { color: var(--gold-bright); }
+
+.proc-cta {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 3rem);
+    text-align: center;
+    border: 1px solid var(--panel-line);
+    border-radius: var(--r-lg);
+    background: var(--panel);
+}
+
+.proc-cta h3 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--gold-soft);
+    margin: 0 0 1rem;
+    font-weight: 700;
+}
+
+.proc-cta p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+/* ---------------------------------------------------------------------
+   10. Scroll-reveal (progressive enhancement)
+   --------------------------------------------------------------------- */
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .band-content,
+        .band-inset,
+        .perf-tile,
+        .pooja-card,
+        .feature-inner,
+        .proc-stat,
+        .proc-desc,
+        .proc-map,
+        .proc-cta {
+            opacity: 0;
+            animation: rise 0.9s var(--ease) both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 24%;
+        }
+        /* keep the staggered tile offset after reveal */
+        .perf-tile:nth-child(2) { animation-name: riseOffset; }
+    }
+}
+
+@keyframes rise {
+    from { opacity: 0; transform: translateY(46px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes riseOffset {
+    from { opacity: 0; transform: translateY(46px); }
+    to { opacity: 1; transform: translateY(-2.5rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+    .hero-bg { transform: none; }
+}
+
+/* ---------------------------------------------------------------------
+   11. Responsive
+   --------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .perf-row { grid-template-columns: 1fr; gap: 1.25rem; }
+    .perf-tile { min-height: 440px; }
+    .perf-tile:nth-child(2) { transform: none; }
+    .perf-tile:nth-child(2):hover { transform: translateY(-4px); }
+
+    .proc-feature { grid-template-columns: 1fr; }
+    .proc-desc { order: 2; }
+}
+
+@media (max-width: 768px) {
+    .ritual-band { min-height: 68vh; }
+
+    /* keep imagery readable on mobile: even scrim, left-align all */
+    .band-scrim,
+    .ritual-band.align-right .band-scrim {
+        background: linear-gradient(0deg, rgba(20, 10, 8, 0.95) 12%, rgba(20, 10, 8, 0.55) 55%, rgba(20, 10, 8, 0.2));
+    }
+    .band-content,
+    .ritual-band.align-right .band-content {
+        align-items: flex-start;
+        text-align: left;
+        justify-content: flex-end;
+    }
+    .ritual-band { align-items: flex-end; padding-bottom: 2.5rem; }
+    .band-inset { display: none; }
+
+    .feature-number { font-size: clamp(3rem, 16vw, 5rem); }
+
+    .slideshow-scroll-image { width: 240px; height: 320px; }
+    .slideshow-scroll-container::before,
+    .slideshow-scroll-container::after { width: 40px; }
+}
+
+@media (max-width: 480px) {
+    :root { --pad: 3rem; }
+    .hero-chip { width: 100%; }
+    .proc-stat { min-width: 0; width: 100%; }
+    .slideshow-arrow { width: 42px; height: 42px; font-size: 1.3rem; }
+}

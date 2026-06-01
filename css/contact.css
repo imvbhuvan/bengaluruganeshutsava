@@ -2,18 +2,19 @@
 
 .contact-hero {
     text-align: center;
-    padding: 2.5rem 1rem 1.5rem 1rem;
-    background: #f7f7f7;
+    padding: 4rem 1rem 3rem 1rem;
+    background: linear-gradient(135deg, var(--bg) 0%, var(--bg-2) 100%);
 }
 .contact-hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    color: #b48a1a;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--gold-soft);
     font-family: 'Playfair Display', serif;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
 }
 .contact-hero p {
     font-size: 1.2rem;
-    color: #333;
+    color: var(--muted);
     margin-bottom: 0;
 }
 
@@ -22,16 +23,20 @@
     justify-content: center;
     align-items: flex-start;
     padding: 2rem 1rem 3rem 1rem;
-    background: #fff;
+    background: var(--bg);
 }
 .contact-form {
-    background: #faf8f2;
-    border-radius: 12px;
-    box-shadow: 0 2px 16px rgba(180,138,26,0.08);
-    padding: 2rem 2.5rem;
-    max-width: 420px;
+    background: var(--card);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 3rem;
+    max-width: 500px;
     width: 100%;
     margin: 0 auto;
+    border-top: 5px solid var(--gold-bright);
+    border-left: 1px solid var(--card-line);
+    border-right: 1px solid var(--card-line);
+    border-bottom: 1px solid var(--card-line);
 }
 .form-group {
     margin-bottom: 1.5rem;
@@ -40,42 +45,49 @@
     display: block;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    color: #b48a1a;
+    color: var(--card-heading);
     font-family: 'Poppins', sans-serif;
 }
 .form-group input,
 .form-group textarea {
     width: 100%;
     padding: 0.75rem 1rem;
-    border: 1px solid #e0c97f;
+    border: 1px solid var(--card-line);
     border-radius: 6px;
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
-    background: #fff;
-    color: #222;
+    background: var(--card);
+    color: var(--card-text);
     transition: border-color 0.2s;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--card-muted);
 }
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: #b48a1a;
+    border-color: var(--gold);
     outline: none;
 }
 .submit-btn {
-    background: #b48a1a;
-    color: #fff;
+    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--saffron) 100%);
+    color: var(--maroon);
     border: none;
-    border-radius: 6px;
-    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    padding: 0.8rem 2.5rem;
     font-size: 1.1rem;
     font-family: 'Poppins', sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.2s;
-    box-shadow: 0 2px 8px rgba(180,138,26,0.08);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 .submit-btn:hover,
 .submit-btn:focus {
-    background: #a07a17;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+    background: linear-gradient(135deg, var(--saffron) 0%, var(--gold-bright) 100%);
+    outline: none;
 }
 
 @media (max-width: 600px) {

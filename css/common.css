@@ -5,6 +5,49 @@
     box-sizing: border-box;
 }
 
+/* =====================================================================
+   Site palette — shared dark "cinematic" theme (matches 64th BGU page)
+   ===================================================================== */
+:root {
+    --maroon: #b22222;
+    --maroon-deep: #7a1212;
+    --gold: #d8a93f;
+    --gold-bright: #f4c430;
+    --gold-soft: #ecd596;
+    --saffron: #e07b30;
+
+    --bg: #7a1212;          /* brand maroon — blends with nav & footer */
+    --bg-2: #680f0e;        /* slightly deeper section background */
+    --panel: #93211b;       /* card / panel surface (lifted) */
+    --panel-2: #a52820;     /* hover / raised surface */
+    --panel-line: rgba(236, 213, 150, 0.22); /* hairline / borders */
+
+    --text: #f4ece0;        /* primary text on dark (maroon sections) */
+    --muted: #c6b3a3;       /* secondary text on dark */
+
+    /* Light "card" surface — pops off the maroon page for readability */
+    --card: #f8f2e8;        /* near-white card surface */
+    --card-2: #efe2cf;      /* card hover / zebra / alt rows */
+    --card-text: #33180f;   /* dark body text on light cards */
+    --card-heading: #8b1515;/* maroon headings on light cards */
+    --card-muted: #6e4f42;  /* secondary text on light cards */
+    --card-line: rgba(120, 18, 18, 0.16); /* borders/dividers on light cards */
+
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Poppins', system-ui, sans-serif;
+
+    --r-sm: 14px;
+    --r: 20px;
+    --r-lg: 28px;
+    --r-pill: 999px;
+
+    --sh: 0 24px 60px rgba(0, 0, 0, 0.45);
+    --sh-lg: 0 40px 90px rgba(0, 0, 0, 0.55);
+
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --t: 0.5s var(--ease);
+}
+
 /* Skip Navigation Link */
 .skip-link {
     position: absolute;
@@ -28,18 +71,21 @@
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    background-color: #fff;
-    color: #333;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
 /* Navigation Styles */
 nav {
-    background-color: #B22222;
+    background-color: rgba(178, 34, 34, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 0.8rem 2rem;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
 }
 
 .nav-container {
@@ -75,7 +121,7 @@ nav a {
     color: #FFD700;
     text-decoration: none;
     padding: 0.7rem 1.2rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     font-weight: 500;
     font-size: 1rem;
     letter-spacing: 0.5px;
@@ -86,12 +132,29 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(255, 215, 0, 0.15);
+    border-radius: 25px;
+    transform: scale(0);
+    transition: transform 0.3s ease-out;
+    z-index: -1;
+}
+
+nav a:hover::before {
+    transform: scale(1);
 }
 
 nav a:hover {
-    background-color: #CD5C5C;
-    color: #FFD700;
+    color: #fff;
     transform: translateY(-2px);
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
 }
 
 nav a:focus {
@@ -108,28 +171,27 @@ nav a:focus-visible {
 
 /* Footer Styles */
 footer {
-    background: #B22222;
-    color: #FFD700;
+    background: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
+    color: #f5f5f5;
     text-align: center;
-    padding: 2rem;
+    padding: 4rem 2rem 2rem;
     position: relative;
     bottom: 0;
     width: 100%;
+    border-top: 5px solid #FFD700;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     max-width: 1200px;
     margin: 0 auto;
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .footer-section {
-    flex: 1;
     text-align: left;
-    padding: 1rem;
+    padding: 1rem 0;
 }
 
 .footer-section h3 {

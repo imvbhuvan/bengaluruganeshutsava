@@ -14,35 +14,41 @@
 .milestones-header h1 {
     font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
-    color: #1a237e;
+    color: var(--gold-soft);
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .milestones-header p {
     font-size: 1.2rem;
-    color: #666;
+    color: var(--muted);
     max-width: 600px;
     margin: 0 auto;
 }
 
 .milestone {
     margin-bottom: 6rem;
-    padding: 2rem;
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    padding: 3rem;
+    background: var(--card);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-top: 5px solid var(--gold-bright);
+    border-left: 1px solid var(--card-line);
+    border-right: 1px solid var(--card-line);
+    border-bottom: 1px solid var(--card-line);
 }
 
 .milestone:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(178, 34, 34, 0.25);
+    background: var(--card-2);
 }
 
 .milestone h2 {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
-    color: #B22222;
+    color: var(--card-heading);
     margin-bottom: 2rem;
     text-align: center;
     position: relative;
@@ -57,7 +63,7 @@
     transform: translateX(-50%);
     width: 100px;
     height: 3px;
-    background: #FFD700;
+    background: var(--gold-bright);
 }
 
 .milestone-content {
@@ -145,7 +151,7 @@
 .milestone-text p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #444;
+    color: var(--card-text);
     margin-bottom: 2rem;
 }
 
@@ -157,21 +163,26 @@
 .milestone-highlights li {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
-    padding: 0.8rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    margin-bottom: 1.2rem;
+    padding: 1rem 1.2rem;
+    background: var(--card-2);
+    border-radius: 12px;
+    border-left: 4px solid var(--maroon);
+    border-top: 1px solid var(--card-line);
+    border-right: 1px solid var(--card-line);
+    border-bottom: 1px solid var(--card-line);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .milestone-highlights li:hover {
-    background: #fff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transform: translateX(5px);
+    box-shadow: 0 8px 20px rgba(178, 34, 34, 0.25);
+    transform: translateX(8px);
+    background: var(--card);
 }
 
 .milestone-highlights i {
-    color: #B22222;
+    color: var(--maroon);
     font-size: 1.2rem;
     margin-right: 1rem;
     width: 24px;
@@ -179,7 +190,7 @@
 }
 
 .milestone-highlights span {
-    color: #333;
+    color: var(--card-text);
     font-weight: 500;
 }
 
