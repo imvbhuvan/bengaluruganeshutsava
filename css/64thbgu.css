@@ -536,71 +536,177 @@ section[id] { scroll-margin-top: 84px; }
 .slideshow-modal-close:hover { color: var(--gold-bright); transform: scale(1.1); }
 
 /* ---------------------------------------------------------------------
-   7. Special Highlight — full-bleed parallax feature
+   7. Sri Ganesha Pancharathna Aradhane — feature with image collage
    --------------------------------------------------------------------- */
-.highlight-feature {
-    position: relative;
-    min-height: 92vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: #2a0f0a url('../images/63rdbgu/women-bhajan.jpg') center / cover fixed;
-    overflow: hidden;
-}
-
-.feature-scrim {
-    position: absolute;
-    inset: 0;
+.pancha-feature {
+    padding: var(--pad) 0;
     background:
-        radial-gradient(circle at 50% 40%, rgba(178, 34, 34, 0.4), transparent 60%),
-        linear-gradient(180deg, rgba(20, 10, 8, 0.85), rgba(20, 10, 8, 0.92));
+        radial-gradient(circle at 50% 0%, rgba(178, 34, 34, 0.30), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
 }
 
-.feature-inner {
-    position: relative;
-    z-index: 2;
-    max-width: 760px;
-    padding: 3rem 1.5rem;
+.pancha-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
 }
 
-.feature-inner .section-kicker { color: var(--gold); }
+/* --- Text side --- */
+.pancha-text { min-width: 0; }
 
-.feature-number {
+.pancha-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+}
+
+.pancha-eyebrow .eyebrow-line {
+    width: 38px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.pancha-title {
     font-family: var(--serif);
-    font-size: clamp(3.5rem, 11vw, 7rem);
-    line-height: 1;
+    font-size: clamp(2rem, 4.4vw, 3.3rem);
+    line-height: 1.12;
     font-weight: 700;
-    color: var(--gold-bright);
-    text-shadow: 0 6px 40px rgba(0, 0, 0, 0.4);
-    margin: 0.5rem 0 1rem;
-}
-
-.feature-title {
-    font-family: var(--serif);
-    font-size: clamp(1.6rem, 4vw, 2.6rem);
     color: #fff;
     margin: 0 0 1.25rem;
-    font-weight: 600;
 }
 
-.feature-inner p {
-    font-size: clamp(1rem, 1.8vw, 1.15rem);
-    color: var(--text);
-    opacity: 0.92;
-    max-width: 600px;
-    margin: 0 auto 1.75rem;
+.pancha-lead {
+    font-size: clamp(1rem, 1.7vw, 1.15rem);
+    color: var(--muted);
+    line-height: 1.85;
+    max-width: 540px;
+    margin: 0 0 1.75rem;
 }
 
-.feature-date {
+.pancha-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.pancha-chip {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    padding: 0.65rem 1.5rem;
+    padding: 0.55rem 1.25rem;
     border-radius: var(--r-pill);
     border: 1px solid var(--panel-line);
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
     font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--gold-soft);
+}
+
+.pancha-chip i { color: var(--gold-bright); }
+
+.pancha-register {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem 2.25rem;
+    border-radius: var(--r-pill);
+    background: linear-gradient(135deg, var(--gold-bright), var(--saffron));
+    color: #3a1305;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 14px 30px rgba(244, 196, 48, 0.28);
+    transition: transform var(--t), box-shadow var(--t), filter var(--t);
+}
+
+.pancha-register i { transition: transform var(--t); }
+
+.pancha-register:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(244, 196, 48, 0.42);
+    filter: brightness(1.06);
+}
+
+.pancha-register:hover i { transform: translateX(5px); }
+
+/* --- Image composition --- */
+.pancha-collage { position: relative; }
+
+.pc-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 0.7rem;
+    aspect-ratio: 1 / 1;
+}
+
+.pc-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--r);
+    border: 1px solid var(--panel-line);
+    box-shadow: var(--sh);
+    transition: transform var(--t), box-shadow var(--t);
+}
+
+.pc-grid img:hover {
+    transform: scale(1.03);
+    box-shadow: var(--sh-lg);
+    z-index: 2;
+}
+
+.pc-a { grid-area: 1 / 1 / 5 / 5; }
+.pc-b { grid-area: 1 / 5 / 3 / 7; }
+.pc-c { grid-area: 3 / 5 / 5 / 7; }
+.pc-d { grid-area: 5 / 1 / 7 / 4; }
+.pc-e { grid-area: 5 / 4 / 7 / 7; }
+
+/* Gold medallion seal */
+.pancha-seal {
+    position: absolute;
+    left: -1.4rem;
+    bottom: -1.4rem;
+    width: clamp(118px, 13vw, 170px);
+    height: clamp(118px, 13vw, 170px);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at 32% 30%, #9a1c1c, #4f0c0c);
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 6px rgba(122, 18, 18, 0.55), 0 20px 44px rgba(0, 0, 0, 0.55);
+    z-index: 3;
+}
+
+.seal-num {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--gold-bright);
+}
+
+.seal-label {
+    margin-top: 0.4rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     color: var(--gold-soft);
 }
 
@@ -823,7 +929,8 @@ section[id] { scroll-margin-top: 84px; }
         .band-inset,
         .perf-item,
         .pooja-card,
-        .feature-inner,
+        .pancha-text,
+        .pancha-collage,
         .proc-stat,
         .proc-desc,
         .proc-map,
@@ -863,6 +970,10 @@ section[id] { scroll-margin-top: 84px; }
     .perf-media,
     .perf-body { width: 100%; }
 
+    .pancha-inner { grid-template-columns: 1fr; }
+    .pancha-collage { max-width: 540px; margin: 0 auto; }
+    .pancha-seal { left: auto; right: -0.5rem; bottom: -1rem; }
+
     .proc-feature { grid-template-columns: 1fr; }
     .proc-desc { order: 2; }
 }
@@ -883,8 +994,6 @@ section[id] { scroll-margin-top: 84px; }
     }
     .ritual-band { align-items: flex-end; padding-bottom: 2.5rem; }
     .band-inset { display: none; }
-
-    .feature-number { font-size: clamp(3rem, 16vw, 5rem); }
 
     .slideshow-scroll-image { width: 240px; height: 320px; }
     .slideshow-scroll-container::before,

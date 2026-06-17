@@ -132,7 +132,7 @@
 
 .slides-wrapper {
     display: flex;
-    animation: scroll 40s linear infinite;
+    animation: scroll 60s linear infinite;
     gap: 0;
     padding: 20px 0;
 }
@@ -156,7 +156,7 @@
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-20% * 5));
+        transform: translateX(calc(-20% * 8));
     }
 }
 
@@ -176,7 +176,7 @@
             transform: translateX(0);
         }
         100% {
-            transform: translateX(calc(-25% * 4));
+            transform: translateX(calc(-25% * 8));
         }
     }
 }
@@ -227,7 +227,7 @@
             transform: translateX(0);
         }
         100% {
-            transform: translateX(calc(-100% * 3));
+            transform: translateX(calc(-100% * 8));
         }
     }
 }
@@ -246,7 +246,7 @@
             transform: translateX(0);
         }
         100% {
-            transform: translateX(calc(-50% * 2));
+            transform: translateX(calc(-50% * 8));
         }
     }
 
@@ -395,4 +395,122 @@
         width: 50px;
         height: 2px;
     }
-} 
+}
+
+/* =====================================================================
+   Donation CTA band — image montage background -> donate page
+   ===================================================================== */
+.donate-cta {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(4rem, 9vw, 7rem) 1.5rem;
+    text-align: center;
+}
+
+.donate-cta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    display: flex;
+}
+
+.donate-cta-bg img {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.4s var(--ease);
+}
+
+.donate-cta:hover .donate-cta-bg img {
+    transform: scale(1.06);
+}
+
+.donate-cta-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 50% 38%, rgba(122, 18, 18, 0.55), transparent 62%),
+        linear-gradient(180deg, rgba(40, 8, 8, 0.84), rgba(40, 8, 8, 0.93));
+}
+
+/* inset gold frame */
+.donate-cta::after {
+    content: '';
+    position: absolute;
+    inset: clamp(14px, 2.4vw, 28px);
+    border: 1px solid rgba(236, 213, 150, 0.35);
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.donate-cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.donate-cta-eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 1rem;
+}
+
+.donate-cta h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4.6vw, 3.2rem);
+    line-height: 1.15;
+    color: #fff;
+    margin: 0 0 1.1rem;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.donate-cta p {
+    color: #f1e6d6;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.95;
+}
+
+.donate-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem 2.4rem;
+    border-radius: var(--r-pill);
+    background: linear-gradient(135deg, var(--gold-bright), var(--saffron));
+    color: #3a1305;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 14px 34px rgba(244, 196, 48, 0.30);
+    transition: transform var(--t), box-shadow var(--t), filter var(--t);
+}
+
+.donate-cta-btn i { transition: transform var(--t); }
+
+.donate-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 44px rgba(244, 196, 48, 0.45);
+    filter: brightness(1.06);
+}
+
+.donate-cta-btn:hover i { transform: translateX(5px); }
+
+/* On small screens, keep only the first two background images so the
+   montage doesn't become a row of thin slivers. */
+@media (max-width: 600px) {
+    .donate-cta-bg img:nth-child(n+3) { display: none; }
+}
