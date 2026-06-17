@@ -321,3 +321,115 @@ body {
     outline: 2px solid var(--gold-bright);
     outline-offset: 2px;
 }
+
+/* ----------------------------------------------------------------------
+   Mobile: stack each table row into a card so the Donate button is
+   always visible (no off-screen horizontal scrolling).
+   ---------------------------------------------------------------------- */
+@media (max-width: 600px) {
+    /* Cards flow vertically — drop the horizontal scroll & container chrome */
+    .donate-table-container {
+        overflow-x: visible;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .donate-table,
+    .donate-table tbody,
+    .donate-table tbody td {
+        display: block;
+        width: 100%;
+    }
+
+    /* The column headers are replaced by per-field labels below */
+    .donate-table thead {
+        display: none;
+    }
+
+    /* Each row becomes a self-contained card */
+    .donate-table tbody tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.25rem;
+        border: 1px solid var(--card-line);
+        border-radius: 14px;
+        overflow: hidden;
+        background: var(--card);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Neutralise the desktop zebra / hover backgrounds inside cards */
+    .donate-table tbody tr:nth-child(even) td,
+    .donate-table tbody tr:hover td {
+        background: transparent;
+    }
+
+    /* Generic cell: label on the left, value on the right */
+    .donate-table tbody td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        text-align: right;
+        padding: 0.65rem 1rem;
+        border-bottom: 1px solid var(--card-line);
+        font-size: 0.9rem;
+        min-width: 0;
+        max-width: none;
+        white-space: normal;
+    }
+
+    .donate-table tbody td::before {
+        font-weight: 600;
+        color: var(--card-muted);
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    /* Sl. No. is not needed on mobile cards */
+    .donate-table tbody td:nth-child(1) {
+        display: none;
+    }
+
+    /* Field labels (the <td>s carry no classes, so key off position) */
+    .donate-table tbody td:nth-child(3)::before { content: "Date"; }
+    .donate-table tbody td:nth-child(4)::before { content: "Amount"; }
+
+    /* Pooja name = card title, full width, shown first, no label */
+    .donate-table tbody td:nth-child(2) {
+        order: -1;
+        display: block;
+        text-align: left;
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: var(--card-heading);
+        background: var(--card-2);
+        padding: 0.9rem 1rem;
+    }
+
+    /* Hide empty date cells (most rows have no scheduled date) */
+    .donate-table tbody td:nth-child(3):empty {
+        display: none;
+    }
+
+    /* Donate cell = full-width button at the bottom of the card */
+    .donate-table tbody td:nth-child(5) {
+        display: block;
+        text-align: center;
+        border-bottom: none;
+        padding: 0.85rem 1rem;
+    }
+
+    .donate-table tbody td:nth-child(5) .donate-btn {
+        display: block;
+        width: 100%;
+        padding: 0.7rem 1rem;
+        font-size: 0.92rem;
+        min-height: 44px;
+    }
+}

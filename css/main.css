@@ -295,25 +295,31 @@
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 3rem;
-    max-width: 1100px;
+    gap: 2rem;
+    max-width: 1200px;
     margin: 0 auto;
     text-align: center;
 }
 
 .ganesha-shloka-kannada, .ganesha-shloka-english {
     flex: 1;
-    font-size: 1.2rem;
+    min-width: 0;
+    font-size: clamp(0.72rem, 2.1vw, 1rem);
     line-height: 2.2;
     font-family: 'Playfair Display', serif;
     color: var(--card-heading);
     font-weight: 600;
-    padding: 3rem 2rem;
+    padding: 3rem 1.25rem;
     background: var(--card);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     border: 1px solid var(--card-line);
+    white-space: nowrap;
+}
+
+.ganesha-shloka-kannada br, .ganesha-shloka-english br {
+    white-space: normal;
 }
 
 .ganesha-shloka-kannada:hover, .ganesha-shloka-english:hover {
@@ -513,4 +519,201 @@
    montage doesn't become a row of thin slivers. */
 @media (max-width: 600px) {
     .donate-cta-bg img:nth-child(n+3) { display: none; }
+}
+
+/* =====================================================================
+   Sri Ganesha Pancharathna Aradhane — homepage treatment
+   Centered content over a full background image, with the remaining
+   photos fanned out in an arc above it.
+   ===================================================================== */
+.pancha-arc-section {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(3.5rem, 8vw, 6rem) 1.5rem clamp(4rem, 9vw, 7rem);
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(178, 34, 34, 0.30), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+}
+
+.pancha-arc-inner {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ---- Reversed-U (∩) arch of overlapping, flat photos ----
+   Each card steps DOWN as it moves away from the centre, so their tops
+   trace a flat-segmented arch. Center card sits highest and on top. */
+.pancha-arc {
+    --card-w: clamp(120px, 16vw, 188px);
+    --overlap: clamp(26px, 3.4vw, 52px);   /* how much neighbours stack over each other */
+    --step-y: clamp(16px, 2.2vw, 32px);    /* vertical drop per step from centre */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.pancha-arc img {
+    --offset: calc(var(--i) - (var(--n) - 1) / 2);   /* signed distance from centre */
+    position: relative;
+    width: var(--card-w);
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 5px solid #fff;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    margin-inline: calc(var(--overlap) / -2);
+    transform: translateY(calc(abs(var(--offset)) * var(--step-y)));
+    z-index: calc(10 - abs(var(--offset)));          /* centre card on top */
+    transition: transform var(--t), box-shadow var(--t);
+}
+
+.pancha-arc img:hover {
+    transform: translateY(calc(abs(var(--offset)) * var(--step-y) - 16px)) scale(1.04);
+    box-shadow: 0 24px 54px rgba(0, 0, 0, 0.6);
+    z-index: 20;
+}
+
+/* ---- Centered content ---- */
+.pancha-center {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pancha-band-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 0.9rem;
+}
+
+.pancha-band-eyebrow::before,
+.pancha-band-eyebrow::after {
+    content: '';
+    width: 34px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.pancha-band-eyebrow::after {
+    background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.pancha-band-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4.6vw, 3.3rem);
+    line-height: 1.12;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1.25rem;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+.pancha-stat {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 1.4rem;
+}
+
+.pancha-stat-num {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 7vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--gold-bright);
+    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.5);
+}
+
+.pancha-stat-label {
+    margin-top: 0.5rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+}
+
+.pancha-panel-text {
+    color: #f1e6d6;
+    font-size: clamp(0.98rem, 1.6vw, 1.1rem);
+    line-height: 1.8;
+    margin: 0 auto 1.7rem;
+    max-width: 540px;
+}
+
+.pancha-panel-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 1.8rem;
+}
+
+.pancha-band-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--panel-line);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--gold-soft);
+}
+
+.pancha-band-chip i { color: var(--gold-bright); }
+
+.pancha-band-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.95rem 2.4rem;
+    border-radius: var(--r-pill);
+    background: linear-gradient(135deg, var(--gold-bright), var(--saffron));
+    color: #3a1305;
+    font-weight: 700;
+    font-size: 0.92rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 14px 30px rgba(244, 196, 48, 0.28);
+    transition: transform var(--t), box-shadow var(--t), filter var(--t);
+}
+
+.pancha-band-btn i { transition: transform var(--t); }
+
+.pancha-band-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(244, 196, 48, 0.42);
+    filter: brightness(1.06);
+}
+
+.pancha-band-btn:hover i { transform: translateX(5px); }
+
+/* Tighten the arch on smaller screens so it never overflows */
+@media (max-width: 760px) {
+    .pancha-arc {
+        --card-w: clamp(92px, 21vw, 130px);
+        --overlap: clamp(20px, 4vw, 34px);
+        --step-y: clamp(12px, 3vw, 22px);
+    }
+}
+
+@media (max-width: 480px) {
+    .pancha-arc {
+        --card-w: 84px;
+        --overlap: 26px;
+        --step-y: 14px;
+    }
 }
