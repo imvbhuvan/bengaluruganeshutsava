@@ -522,198 +522,296 @@
 }
 
 /* =====================================================================
-   Sri Ganesha Pancharathna Aradhane — homepage treatment
-   Centered content over a full background image, with the remaining
-   photos fanned out in an arc above it.
+   Sri Ganesha Pancharathna Aradhane — "Resonance"
+   A one-of-a-kind homepage feature: a blooming cluster of photographs
+   sits inside animated golden resonance rings (the chant rippling
+   outward), anchored by a gold medallion, beside the story.
    ===================================================================== */
-.pancha-arc-section {
+.pancha-resonance {
     position: relative;
     overflow: hidden;
-    padding: clamp(3.5rem, 8vw, 6rem) 1.5rem clamp(4rem, 9vw, 7rem);
-    text-align: center;
+    isolation: isolate;
+    padding: clamp(4.5rem, 9vw, 8rem) 1.5rem;
     background:
-        radial-gradient(circle at 50% 0%, rgba(178, 34, 34, 0.30), transparent 55%),
-        linear-gradient(180deg, var(--bg), var(--bg-2));
+        radial-gradient(circle at 78% 16%, rgba(178, 34, 34, 0.45), transparent 56%),
+        radial-gradient(circle at 10% 92%, rgba(224, 123, 48, 0.16), transparent 50%),
+        linear-gradient(180deg, var(--bg-2), #570c0b 58%, var(--bg-2));
 }
 
-.pancha-arc-inner {
+/* hairline gold seam across the top edge */
+.pancha-resonance::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(720px, 88%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(236, 213, 150, 0.55), transparent);
+}
+
+/* ---- ambient backdrop: giant faint Om glyph ---- */
+.pr-ambient {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.pr-om {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Nirmala UI', 'Noto Serif Devanagari', 'Segoe UI', system-ui, serif;
+    font-size: clamp(18rem, 50vw, 44rem);
+    line-height: 1;
+    color: rgba(244, 196, 48, 0.05);
+    user-select: none;
+}
+
+/* ---- layout ---- */
+.pr-inner {
     position: relative;
-    max-width: 900px;
+    max-width: 1180px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.02fr 0.98fr;
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
 }
 
-/* ---- Reversed-U (∩) arch of overlapping, flat photos ----
-   Each card steps DOWN as it moves away from the centre, so their tops
-   trace a flat-segmented arch. Center card sits highest and on top. */
-.pancha-arc {
-    --card-w: clamp(120px, 16vw, 188px);
-    --overlap: clamp(26px, 3.4vw, 52px);   /* how much neighbours stack over each other */
-    --step-y: clamp(16px, 2.2vw, 32px);    /* vertical drop per step from centre */
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
-}
-
-.pancha-arc img {
-    --offset: calc(var(--i) - (var(--n) - 1) / 2);   /* signed distance from centre */
+/* =========================== PHOTO STAGE =========================== */
+.pr-stage {
     position: relative;
-    width: var(--card-w);
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+}
+
+/* resonance rings — the chant rippling outward */
+.pr-rings {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: grid;
+    place-items: center;
+}
+
+.pr-rings span {
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px solid rgba(236, 213, 150, 0.30);
+    box-shadow: inset 0 0 50px rgba(244, 196, 48, 0.07);
+    animation: pr-ripple 6s var(--ease) infinite;
+}
+
+.pr-rings span:nth-child(1) { width: 62%;  height: 62%;  animation-delay: 0s; }
+.pr-rings span:nth-child(2) { width: 88%;  height: 88%;  animation-delay: 1.2s; }
+.pr-rings span:nth-child(3) { width: 114%; height: 114%; animation-delay: 2.4s; border-color: rgba(236, 213, 150, 0.16); }
+
+@keyframes pr-ripple {
+    0%   { transform: scale(0.85); opacity: 0; }
+    35%  { opacity: 1; }
+    100% { transform: scale(1.14); opacity: 0; }
+}
+
+/* blooming fan of photographs */
+.pr-fan {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.pr-ph {
+    position: absolute;
     aspect-ratio: 3 / 4;
     object-fit: cover;
-    border-radius: 14px;
+    border-radius: 16px;
     border: 5px solid #fff;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
-    margin-inline: calc(var(--overlap) / -2);
-    transform: translateY(calc(abs(var(--offset)) * var(--step-y)));
-    z-index: calc(10 - abs(var(--offset)));          /* centre card on top */
-    transition: transform var(--t), box-shadow var(--t);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55);
+    transform: rotate(var(--rot, 0deg));
+    transition: transform 0.55s var(--ease), box-shadow 0.55s var(--ease);
+    will-change: transform;
 }
 
-.pancha-arc img:hover {
-    transform: translateY(calc(abs(var(--offset)) * var(--step-y) - 16px)) scale(1.04);
-    box-shadow: 0 24px 54px rgba(0, 0, 0, 0.6);
-    z-index: 20;
+.pr-ph1 { width: 46%; left: 27%; top: 11%; z-index: 6; }
+.pr-ph2 { width: 37%; left: 1%;  top: 6%;  z-index: 3; }
+.pr-ph3 { width: 37%; left: 62%; top: 3%;  z-index: 4; }
+.pr-ph4 { width: 39%; left: 2%;  top: 45%; z-index: 5; }
+.pr-ph5 { width: 39%; left: 59%; top: 47%; z-index: 5; }
+
+.pr-ph:hover {
+    transform: translateY(-14px) rotate(calc(var(--rot, 0deg) * 0.3)) scale(1.05);
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.62);
+    z-index: 10;
 }
 
-/* ---- Centered content ---- */
-.pancha-center {
-    position: relative;
-    max-width: 600px;
-    margin: 0 auto;
+/* gold medallion seal anchoring the bloom */
+.pr-seal {
+    position: absolute;
+    left: 50%;
+    bottom: 1%;
+    transform: translateX(-50%);
+    z-index: 7;
+    width: clamp(116px, 27%, 168px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at 34% 30%, #9a1c1c, #470a0a);
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 7px rgba(122, 18, 18, 0.6), 0 26px 54px rgba(0, 0, 0, 0.6);
 }
 
-.pancha-band-eyebrow {
+.pr-seal::before {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    border: 1px dashed rgba(236, 213, 150, 0.5);
+}
+
+.pr-seal-num {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3.4vw, 2rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--gold-bright);
+}
+
+.pr-seal-label {
+    margin-top: 0.35rem;
+    padding: 0 0.7rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+}
+
+/* =========================== STORY SIDE =========================== */
+.pr-content { position: relative; min-width: 0; }
+
+.pr-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
     font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--gold-soft);
-    margin-bottom: 0.9rem;
+    color: var(--gold);
+    margin-bottom: 1.1rem;
 }
 
-.pancha-band-eyebrow::before,
-.pancha-band-eyebrow::after {
-    content: '';
-    width: 34px;
+.pr-eyebrow-line {
+    width: 42px;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold));
-}
-
-.pancha-band-eyebrow::after {
     background: linear-gradient(90deg, var(--gold), transparent);
 }
 
-.pancha-band-title {
+.pr-title {
     font-family: var(--serif);
-    font-size: clamp(2rem, 4.6vw, 3.3rem);
-    line-height: 1.12;
+    font-size: clamp(2.1rem, 4.8vw, 3.5rem);
+    line-height: 1.08;
     font-weight: 700;
     color: #fff;
-    margin: 0 0 1.25rem;
-    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    margin: 0 0 1.3rem;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
 }
 
-.pancha-stat {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 0 1.4rem;
+.pr-title .accent {
+    background: linear-gradient(120deg, var(--gold-bright), var(--saffron));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
-.pancha-stat-num {
-    font-family: var(--serif);
-    font-size: clamp(2.8rem, 7vw, 4.2rem);
-    font-weight: 700;
-    line-height: 1;
-    color: var(--gold-bright);
-    text-shadow: 0 2px 22px rgba(0, 0, 0, 0.5);
-}
-
-.pancha-stat-label {
-    margin-top: 0.5rem;
-    font-size: 0.74rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold-soft);
-}
-
-.pancha-panel-text {
-    color: #f1e6d6;
-    font-size: clamp(0.98rem, 1.6vw, 1.1rem);
-    line-height: 1.8;
-    margin: 0 auto 1.7rem;
+.pr-lead {
+    font-size: clamp(1rem, 1.7vw, 1.15rem);
+    color: var(--text);
+    line-height: 1.85;
     max-width: 540px;
+    margin: 0 0 1.8rem;
+    opacity: 0.94;
 }
 
-.pancha-panel-meta {
+.pr-lead b { color: var(--gold-soft); font-weight: 600; }
+
+.pr-meta {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.6rem;
-    margin-bottom: 1.8rem;
+    gap: 0.7rem;
+    margin-bottom: 2rem;
 }
 
-.pancha-band-chip {
+.pr-chip {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1.1rem;
+    gap: 0.55rem;
+    padding: 0.55rem 1.2rem;
     border-radius: var(--r-pill);
     border: 1px solid var(--panel-line);
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: var(--gold-soft);
 }
 
-.pancha-band-chip i { color: var(--gold-bright); }
+.pr-chip i { color: var(--gold-bright); }
 
-.pancha-band-btn {
+.pr-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.7rem;
-    padding: 0.95rem 2.4rem;
+    padding: 1rem 2.4rem;
     border-radius: var(--r-pill);
     background: linear-gradient(135deg, var(--gold-bright), var(--saffron));
     color: #3a1305;
     font-weight: 700;
-    font-size: 0.92rem;
-    letter-spacing: 0.03em;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     text-decoration: none;
-    box-shadow: 0 14px 30px rgba(244, 196, 48, 0.28);
+    box-shadow: 0 14px 34px rgba(244, 196, 48, 0.30);
     transition: transform var(--t), box-shadow var(--t), filter var(--t);
 }
 
-.pancha-band-btn i { transition: transform var(--t); }
+.pr-btn i { transition: transform var(--t); }
 
-.pancha-band-btn:hover {
+.pr-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 18px 40px rgba(244, 196, 48, 0.42);
+    box-shadow: 0 18px 44px rgba(244, 196, 48, 0.45);
     filter: brightness(1.06);
 }
 
-.pancha-band-btn:hover i { transform: translateX(5px); }
+.pr-btn:hover i { transform: translateX(5px); }
 
-/* Tighten the arch on smaller screens so it never overflows */
-@media (max-width: 760px) {
-    .pancha-arc {
-        --card-w: clamp(92px, 21vw, 130px);
-        --overlap: clamp(20px, 4vw, 34px);
-        --step-y: clamp(12px, 3vw, 22px);
+/* ---- responsive ---- */
+@media (max-width: 920px) {
+    .pr-inner {
+        grid-template-columns: 1fr;
+        gap: clamp(2.8rem, 9vw, 4rem);
     }
+    .pr-content { text-align: center; }
+    .pr-eyebrow, .pr-meta { justify-content: center; }
+    .pr-lead { margin-left: auto; margin-right: auto; }
 }
 
-@media (max-width: 480px) {
-    .pancha-arc {
-        --card-w: 84px;
-        --overlap: 26px;
-        --step-y: 14px;
-    }
+@media (max-width: 520px) {
+    .pr-stage { max-width: 380px; }
+    .pr-seal { width: clamp(96px, 30%, 128px); }
+    .pr-ph { border-width: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pr-rings span { animation: none; opacity: 0.55; }
 }

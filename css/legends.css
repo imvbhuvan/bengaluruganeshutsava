@@ -101,109 +101,67 @@
 }
 
 /* ---------------------------------------------------------------------
-   Artist grid + cards
+   Gallery wall — gilded frames around the archival photographs.
+   The images already carry their own captions, so the frame is the
+   only adornment: a slim gold border + soft mat, hung on the maroon wall.
    --------------------------------------------------------------------- */
-.artists-grid {
+.legends-gallery {
     max-width: 1180px;
     margin: 0 auto;
     padding: 0 1.5rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    align-items: start;
+    gap: clamp(1.8rem, 4vw, 3.2rem);
 }
 
-.artist-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--card);
-    border: 1px solid var(--card-line);
-    border-radius: var(--r-lg);
-    overflow: hidden;
-    box-shadow: var(--sh);
-    transition: transform var(--t), box-shadow var(--t);
-}
-
-.artist-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--sh-lg);
-}
-
-.artist-photo {
+.legend-frame {
     position: relative;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    background: var(--card-2);
+    margin: 0;
+    padding: 0.55rem;
+    border-radius: 6px;
+    background:
+        linear-gradient(135deg, #f7d977 0%, #c9962f 22%, #8c5e12 48%,
+                        #e7be5a 64%, #a9781e 82%, #6e4a0f 100%);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.35) inset,
+        0 0 0 1px rgba(60, 35, 6, 0.55),
+        var(--sh);
+    cursor: zoom-in;
+    transition: transform var(--t), box-shadow var(--t);
+    outline: none;
 }
 
-.artist-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s var(--ease);
-}
-
-.artist-card:hover .artist-photo img {
-    transform: scale(1.06);
-}
-
-/* gold ribbon across the top of the photo */
-.artist-photo::before {
+/* inner bevel line of the frame */
+.legend-frame::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--gold-bright), var(--saffron));
+    inset: 0.42rem;
+    border-radius: 3px;
+    box-shadow:
+        0 0 0 1px rgba(60, 35, 6, 0.45),
+        0 0 0 2px rgba(255, 240, 200, 0.35);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.legend-frame img {
+    display: block;
+    width: 100%;
+    height: auto;          /* keep full image — captions live at the bottom */
+    border-radius: 2px;
+    position: relative;
     z-index: 1;
 }
 
-.artist-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    padding: 1.5rem;
-    flex-grow: 1;
-}
-
-.artist-discipline {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #9a6a14; /* deep gold — readable on the light card */
-}
-
-.artist-name {
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    font-weight: 600;
-    line-height: 1.2;
-    color: var(--card-heading);
-    margin: 0;
-}
-
-.artist-years {
-    align-self: flex-start;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--card-heading);
-    background: rgba(139, 21, 21, 0.08);
-    border: 1px solid var(--card-line);
-    padding: 0.3rem 0.85rem;
-    border-radius: var(--r-pill);
-}
-
-.artist-years i { color: var(--maroon); }
-
-.artist-bio {
-    color: var(--card-text);
-    font-size: 0.92rem;
-    line-height: 1.7;
-    margin: 0.15rem 0 0;
+.legend-frame:hover,
+.legend-frame:focus-visible {
+    transform: translateY(-8px);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.5) inset,
+        0 0 0 1px rgba(60, 35, 6, 0.55),
+        0 0 0 4px rgba(244, 196, 48, 0.28),
+        var(--sh-lg);
 }
 
 /* ---------------------------------------------------------------------
@@ -211,11 +169,11 @@
    --------------------------------------------------------------------- */
 @supports (animation-timeline: view()) {
     @media (prefers-reduced-motion: no-preference) {
-        .artist-card {
+        .legend-frame {
             opacity: 0;
             animation: artistRise 0.8s var(--ease) both;
             animation-timeline: view();
-            animation-range: entry 0% cover 18%;
+            animation-range: entry 0% cover 16%;
         }
     }
 }
@@ -226,15 +184,98 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .artist-card { animation: none !important; opacity: 1 !important; }
+    .legend-frame { animation: none !important; opacity: 1 !important; }
 }
+
+/* ---------------------------------------------------------------------
+   Lightbox
+   --------------------------------------------------------------------- */
+.legend-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 4vw, 3rem);
+    background: rgba(18, 6, 6, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.legend-lightbox.is-open {
+    display: flex;
+    animation: lightboxFade 0.3s var(--ease) both;
+}
+
+@keyframes lightboxFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.legend-lightbox__img {
+    max-width: min(92vw, 720px);
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6), 0 0 0 6px rgba(244, 196, 48, 0.18);
+}
+
+.legend-lightbox__close,
+.legend-lightbox__nav {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(236, 213, 150, 0.35);
+    background: rgba(40, 12, 12, 0.6);
+    color: var(--gold-soft);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.25s var(--ease), transform 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.legend-lightbox__close {
+    top: clamp(1rem, 3vw, 1.8rem);
+    right: clamp(1rem, 3vw, 1.8rem);
+    width: 46px;
+    height: 46px;
+    font-size: 1.15rem;
+}
+
+.legend-lightbox__nav {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 54px;
+    height: 54px;
+    font-size: 1.3rem;
+}
+
+.legend-lightbox__nav--prev { left: clamp(0.5rem, 3vw, 2rem); }
+.legend-lightbox__nav--next { right: clamp(0.5rem, 3vw, 2rem); }
+
+.legend-lightbox__close:hover,
+.legend-lightbox__nav:hover {
+    background: var(--maroon);
+    color: #fff;
+}
+
+.legend-lightbox__nav:hover { transform: translateY(-50%) scale(1.08); }
 
 /* ---------------------------------------------------------------------
    Responsive
    --------------------------------------------------------------------- */
-@media (max-width: 600px) {
-    .artists-grid {
+@media (max-width: 640px) {
+    .legends-gallery {
         grid-template-columns: 1fr;
-        max-width: 380px;
+        max-width: 420px;
+        gap: 2rem;
+    }
+
+    .legend-lightbox__nav {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
     }
 }

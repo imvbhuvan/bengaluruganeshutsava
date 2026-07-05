@@ -420,7 +420,7 @@ section[id] { scroll-margin-top: 84px; }
     overflow: hidden;
     display: flex;
     align-items: center;
-    min-height: 320px;
+    min-height: 360px;
     padding: 0.5rem 0;
 }
 
@@ -454,8 +454,9 @@ section[id] { scroll-margin-top: 84px; }
 
 .slideshow-scroll-image {
     flex-shrink: 0;
-    width: 300px;
-    height: 380px;
+    height: 320px;
+    width: auto;
+    aspect-ratio: 1024 / 712;   /* match the landscape poster art so nothing is cropped */
     object-fit: cover;
     border-radius: var(--r);
     border: 3px solid transparent;
@@ -1024,7 +1025,7 @@ section[id] { scroll-margin-top: 84px; }
     .ritual-band { align-items: flex-end; padding-bottom: 2.5rem; }
     .band-inset { display: none; }
 
-    .slideshow-scroll-image { width: 240px; height: 320px; }
+    .slideshow-scroll-image { height: 210px; width: auto; }
     .slideshow-scroll-container::before,
     .slideshow-scroll-container::after { width: 40px; }
 }

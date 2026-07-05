@@ -18,16 +18,12 @@ function scrollSlideshow(venue, direction) {
     stopMarqueeScroll(venue);
     const track = document.getElementById(venue + '-scroll-track');
     
-    // Responsive scroll values based on screen width and image size
+    // Responsive scroll values — one landscape card + gap (matches CSS breakpoints)
     let scrollBy;
-    if (window.innerWidth <= 480) {
-        scrollBy = 250 + 12; // mobile small
-    } else if (window.innerWidth <= 700) {
-        scrollBy = 300 + 12; // mobile medium
-    } else if (window.innerWidth <= 900) {
-        scrollBy = 350 + 24; // tablet
+    if (window.innerWidth <= 768) {
+        scrollBy = 288 + 24; // mobile / tablet card width + gap
     } else {
-        scrollBy = 400 + 24; // desktop
+        scrollBy = 460 + 24; // desktop card width + gap
     }
     
     track.scrollBy({left: direction * scrollBy, behavior: 'smooth'});
@@ -43,18 +39,23 @@ function scrollSlideshow(venue, direction) {
 // Slideshow data
 const slideshows = {
     venue1: [
-        {img: 'images/63rdbgu/artists/mdpallavi.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. M.D. Pallavi'},
-        {img: 'images/63rdbgu/artists/indulakshmi.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Lakshmi Nagaraj & Smt. Indu Nagaraj'},
-        {img: 'images/63rdbgu/artists/sooryagayathri.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Soorya Gayathri'},
-        {img: 'images/63rdbgu/artists/sunitha.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Sunitha'},
-        {img: 'images/63rdbgu/artists/venkatesh Kumar.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Venkatesh Kumar'},
-        {img: 'images/63rdbgu/artists/praveen godkindi.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Praveen Godkindi'},
-        {img: 'images/63rdbgu/artists/63flutes.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. 63 Flutes'},
-        {img: 'images/63rdbgu/artists/vinayvaranasi.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Vinay Varanasi'},
-        {img: 'images/63rdbgu/artists/jagadeesh.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Jagadeesh'},
-        {img: 'images/63rdbgu/artists/savithakka.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Savitha Kaka'},
-        {img: 'images/63rdbgu/artists/balasubramanya.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Balasubramanya'},
-        {img: 'images/63rdbgu/artists/gangasasidharan.jpg', performance: 'Bhakti Sangeetha', artist: 'Smt. Gangasasidharan'}
+        {img: 'images/63rdbgu/artists/ar1.jpg',  performance: 'Bhakti Sangeetha', artist: 'Vijay Yesudas'},
+        {img: 'images/63rdbgu/artists/ar2.jpg',  performance: 'Handpan Ensemble', artist: 'Bengaluru Handpan Collective'},
+        {img: 'images/63rdbgu/artists/ar3.jpg',  performance: 'Svara — Classical & Devotional', artist: 'Shweta Mohan'},
+        {img: 'images/63rdbgu/artists/ar4.jpg',  performance: 'Bhakti Sangeetha', artist: 'Shri Harsha'},
+        {img: 'images/63rdbgu/artists/ar5.jpg',  performance: 'Bhakti Sangeetha', artist: 'Siddhartha Belmannu, Keerthan Holla & Anirudh Aithal'},
+        {img: 'images/63rdbgu/artists/ar6.jpg',  performance: 'Dhara — A Divine Musical Experience', artist: 'Smt. Sivasri Tejasvi Surya'},
+        {img: 'images/63rdbgu/artists/ar7.jpg',  performance: 'Live Fusion Edition', artist: 'Karthik'},
+        {img: 'images/63rdbgu/artists/ar8.jpg',  performance: 'Ensemble of 33 Flutes', artist: 'Vid. H S Venugopal'},
+        {img: 'images/63rdbgu/artists/ar9.jpg',  performance: 'Pratidhee', artist: 'Manju Drums Collectiiv'},
+        {img: 'images/63rdbgu/artists/ar10.jpg', performance: 'The Ganesha Folk Collective', artist: 'VP Culture Club'},
+        {img: 'images/63rdbgu/artists/ar11.jpg', performance: 'Devotional Fusion', artist: 'Mandolin Maestro U Rajesh'},
+        {img: 'images/63rdbgu/artists/ar12.jpg', performance: 'Balaganapati Katha', artist: 'Vinay Varanasi'},
+        {img: 'images/63rdbgu/artists/ar13.jpg', performance: 'Sama', artist: 'Aayana Dance Company'},
+        {img: 'images/63rdbgu/artists/ar14.jpg', performance: 'Bhakti Sangeetha', artist: 'Vijay Prakash'},
+        {img: 'images/63rdbgu/artists/ar15.jpg', performance: 'Amitharanga', artist: 'Amith Nadig'},
+        {img: 'images/63rdbgu/artists/ar16.jpg', performance: 'Divine Beats', artist: 'M.C.S & Troupe'},
+        {img: 'images/63rdbgu/artists/ar17.jpg', performance: 'Aham Swaraasmi', artist: 'Team Swarapaana'}
     ]
 };
 
